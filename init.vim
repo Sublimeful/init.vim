@@ -243,8 +243,6 @@ end
 
 
 -- Autocomplete keymaps and settings
-
--- Functions
 local function t(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -257,11 +255,9 @@ function _G.smart_stab()
     return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
 end
 
--- Keybinds
 vim.api.nvim_set_keymap('i', '<Tab>',   'v:lua.smart_tab()', {expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_stab()',{expr = true, noremap = true})
 
--- Settings
 vim.g.completion_confirm_key = ""
 vim.g.completion_timer_cycle = 1
 vim.g.completion_trigger_on_delete = 1
