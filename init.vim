@@ -91,8 +91,8 @@ nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 
 " bind f5 to run run.sh file (if it exists)
-nnoremap <f5>                 :wa<CR>:!bash run.sh<CR>
-inoremap <f5>            <Esc>:wa<CR>:!bash run.sh<CR>
+nnoremap <f5>                 :wa<CR>:!run.sh<CR>
+inoremap <f5>            <Esc>:wa<CR>:!run.sh<CR>
 
 " Telescope
 nnoremap <silent> <Leader>f   :Telescope find_files<CR>
