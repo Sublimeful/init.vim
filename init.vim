@@ -47,6 +47,64 @@ call plug#end()
 
 
 
+" <-- Functions
+
+function! TabSweep()
+  " remember current tab number
+  let currentTabNumber=tabpagenr()
+
+  " cycle through all the tabs
+  for i in range(1, tabpagenr('$'))
+    execute "normal " . i . "gt"
+  endfor
+
+  " go back to original tab
+  execute "normal " . currentTabNumber . "gt"
+endfunction
+
+function! SaveSess()
+  " SaveSess if user created file called 'Session.vim' in directory and g:saveSession exists
+  if filereadable('Session.vim') && exists("g:saveSession") | Obsession | endif
+endfunction
+
+function! RestoreSess()
+  " @% == "" is to check if vim is in the [No Name] buffer or not
+  " if it is not then dont restore session as user has vimmed into a file
+  if @% != "" | return 0 | endif
+
+  " set g:saveSession to 1 so that vim saves session when exit
+  let g:saveSession=1
+
+  " load session if session file is found on vim enter
+  if filereadable('Session.vim') | execute 'source Session.vim' | endif
+
+  " call tabsweep to refresh the tab names
+  call timer_start(0, {-> TabSweep()})
+endfunction
+
+function! OpenInTab(node)
+  " switch to file window to get file name
+  wincmd l
+
+  " if the current file name is [No Name], then open the file in the current tab
+  " otherwise, open the file in a new tab
+  if @% == ""
+    wincmd h
+    call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
+  else
+    wincmd h
+    call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
+  endif
+
+  " call tabsweep to refresh the tab names
+  call timer_start(0, {-> TabSweep()})
+endfunction
+
+" --> Functions
+
+
+
+
 " <-- Keybinds
 
 " use space as leader key
@@ -345,64 +403,6 @@ parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
 
 EOF
 " --> Lua Settings
-
-
-
-
-" <-- Functions
-
-function! TabSweep()
-  " remember current tab number
-  let currentTabNumber=tabpagenr()
-
-  " cycle through all the tabs
-  for i in range(1, tabpagenr('$'))
-    execute "normal " . i . "gt"
-  endfor
-
-  " go back to original tab
-  execute "normal " . currentTabNumber . "gt"
-endfunction
-
-function! SaveSess()
-  " SaveSess if user created file called 'Session.vim' in directory and g:saveSession exists
-  if filereadable('Session.vim') && exists("g:saveSession") | Obsession | endif
-endfunction
-
-function! RestoreSess()
-  " @% == "" is to check if vim is in the [No Name] buffer or not
-  " if it is not then dont restore session as user has vimmed into a file
-  if @% != "" | return 0 | endif
-
-  " set g:saveSession to 1 so that vim saves session when exit
-  let g:saveSession=1
-
-  " load session if session file is found on vim enter
-  if filereadable('Session.vim') | execute 'source Session.vim' | endif
-
-  " call tabsweep to refresh the tab names
-  call timer_start(0, {-> TabSweep()})
-endfunction
-
-function! OpenInTab(node)
-  " switch to file window to get file name
-  wincmd l
-
-  " if the current file name is [No Name], then open the file in the current tab
-  " otherwise, open the file in a new tab
-  if @% == ""
-    wincmd h
-    call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
-  else
-    wincmd h
-    call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
-  endif
-
-  " call tabsweep to refresh the tab names
-  call timer_start(0, {-> TabSweep()})
-endfunction
-
-" --> Functions
 
 
 
