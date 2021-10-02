@@ -141,7 +141,7 @@ cnoremap <C-h>   <C-w>
 nnoremap <silent> <C-Ins>     :tabnew<CR>
 nnoremap <silent> <C-Del>     :tabclose<CR>
 for i in range(1, 9)
-  execute "nnoremap \<A-".i."> ".i."gt"
+  execute "nnoremap \<A-" . i . "> " . i . "gt"
 endfor
 
 " toggles NERDTree
@@ -329,6 +329,7 @@ vim.g.completion_trigger_on_delete = 1
 vim.g.completion_matching_strategy_list = { "substring", "fuzzy" }
 vim.g.completion_matching_smart_case = 1
 vim.g.completion_sorting = "length"
+
 vim.o.completeopt = 'menuone,noselect'
 vim.o.shortmess = vim.o.shortmess .. 'c'
 
