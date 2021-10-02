@@ -106,10 +106,10 @@ tnoremap <silent> <C-t>       <C-\><C-n>:FloatermToggle<CR>
 inoremap <silent> <C-t>  <Esc>:FloatermToggle<CR>
 
 " Show diagnostics in popup
-nnoremap <silent> <Leader>d   <Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> <Leader>d   :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 " Show definition in split screen
-nnoremap <silent> gd          :sp<CR>:LspDefinition<CR>
+nnoremap <silent> gd          :sp<CR>:lua vim.lsp.buf.definition()<CR>
 
 " --> Keybinds
 
