@@ -24,6 +24,8 @@ Plug 'voldikss/vim-floaterm'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'Raimondi/delimitMate'
@@ -81,7 +83,7 @@ cnoremap <C-h>   <C-w>
 nnoremap <silent> <C-Ins>     :tabnew<CR>
 nnoremap <silent> <C-Del>     :tabclose<CR>
 for i in range(1, 9)
-  execute "nnoremap \<A-" . i . "> " . i . "gt"
+  execute "nnoremap \<A-".i."> ".i."gt"
 endfor
 
 " toggles NERDTree
@@ -89,8 +91,8 @@ nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 
 " bind f5 to run run.sh file (if it exists)
-nnoremap <f5>                 :wa \| !sh run.sh<CR>
-inoremap <f5>            <Esc>:wa \| !sh run.sh<CR>
+nnoremap <f5>                 :wa<CR>:!bash run.sh<CR>
+inoremap <f5>            <Esc>:wa<CR>:!bash run.sh<CR>
 
 " Telescope
 nnoremap <silent> <Leader>f   :Telescope find_files<CR>
@@ -241,6 +243,8 @@ end
 
 
 -- Autocomplete keymaps and settings
+
+-- Functions
 local function t(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
