@@ -20,10 +20,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'voldikss/vim-floaterm'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'voldikss/vim-floaterm'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -94,22 +94,20 @@ inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 nnoremap <f5>                 :wa<CR>:!run.sh<CR>
 inoremap <f5>            <Esc>:wa<CR>:!run.sh<CR>
 
-" Telescope
-nnoremap <silent> <Leader>f   :Telescope find_files<CR>
-nnoremap <silent> <Leader>g   :Telescope live_grep<CR>
-nnoremap <silent> <Leader>b   :Telescope buffers<CR>
-nnoremap <silent> <Leader>h   :Telescope help_tags<CR>
-
 " Floaterm
 nnoremap <silent> <C-t>       :FloatermToggle<CR>
 tnoremap <silent> <C-t>       <C-\><C-n>:FloatermToggle<CR>
 inoremap <silent> <C-t>  <Esc>:FloatermToggle<CR>
 
+" FZF
+nnoremap <silent> <Leader>f   :Files<CR>
+nnoremap <silent> <C-_>       :Rg<CR>
+
 " Show diagnostics in popup
 nnoremap <silent> <Leader>d   :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 " Show definition in split screen
-nnoremap <silent> gd          :sp<CR>:lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <Leader>D   :sp<CR>:lua vim.lsp.buf.definition()<CR>
 
 " --> Keybinds
 
@@ -140,6 +138,9 @@ let g:nerdtree_tabs_synchronize_focus=0
 let g:floaterm_title='SubTerm'
 let g:floaterm_width=0.6
 let g:floaterm_height=0.8
+
+" FZF configuration
+let g:fzf_action={'Enter': 'tab split'}
 
 " save undo history (make a new dir called undohistory in nvim config)
 set undofile
