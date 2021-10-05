@@ -297,9 +297,12 @@ end
 local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html' }
 for _, lsp in ipairs(servers) do
   if lsp == 'html' then
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
     nvim_lsp[lsp].setup {
       cmd = { "html-languageserver.cmd", "--stdio" },
       on_attach = on_attach,
+      capabilities = capabilities,
     }
   else
     nvim_lsp[lsp].setup {
