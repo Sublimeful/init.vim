@@ -291,29 +291,19 @@ require('lualine').setup {
 
 -- LspConfig & Completion
 local nvim_lsp = require("lspconfig")
-
--- Capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local on_attach = function(client, bufnr)
   require('completion').on_attach(client, bufnr)
 end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
 local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html' }
 for _, lsp in ipairs(servers) do
   if lsp == 'html' then
     nvim_lsp[lsp].setup {
       cmd = { "html-languageserver.cmd", "--stdio" },
       on_attach = on_attach,
-      capabilities = capabilities,
     }
   else
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
-      capabilities = capabilities,
     }
   end
 end
