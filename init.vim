@@ -110,10 +110,6 @@ endfunction
 " use space as leader key
 map <Space>  <Leader>
 
-" escape key
-inoremap <C-G>  <Esc>
-cnoremap <C-G>  <C-C>
-
 " set j and k to move up/down one DISPLAYED line (ignore wrapping)
 nnoremap k  gk
 nnoremap j  gj
