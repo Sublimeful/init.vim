@@ -23,8 +23,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-Plug 'voldikss/vim-floaterm'
-
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -148,10 +146,10 @@ inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 nnoremap <f5>                 :wa<CR>:!run.sh<CR><CR>
 inoremap <f5>            <Esc>:wa<CR>:!run.sh<CR><CR>
 
-" Floaterm
-nnoremap <silent> <C-t>       :FloatermToggle<CR>
-tnoremap <silent> <C-t>       <C-\><C-n>:FloatermToggle<CR>
-inoremap <silent> <C-t>  <Esc>:FloatermToggle<CR>
+" Terminal
+nnoremap <silent> <C-t>  :tabnew<CR>:term<CR>i
+tnoremap <silent> <C-t>  <C-\><C-n>:tabclose<CR>
+inoremap <silent> <C-t>  <Esc>:tabnew<CR>:term<CR>i
 
 " FZF
 nnoremap <silent> <Leader>f   :Files<CR>
@@ -188,11 +186,6 @@ let g:nerdtree_tabs_smart_startup_focus=2
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
-
-" Floaterm configuration
-let g:floaterm_title='SubTerm'
-let g:floaterm_width=0.6
-let g:floaterm_height=0.8
 
 " FZF configuration
 let g:fzf_action={'Enter': 'tab split'}
