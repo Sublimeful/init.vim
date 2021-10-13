@@ -21,7 +21,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -284,13 +284,13 @@ local nvim_lsp = require("lspconfig")
 local on_attach = function(client, bufnr)
   require('completion').on_attach(client, bufnr)
 end
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html' }
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html'}
 for _, lsp in ipairs(servers) do
   if lsp == 'html' then
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     nvim_lsp[lsp].setup {
-      cmd = { "html-languageserver.cmd", "--stdio" },
+      cmd = {"html-languageserver.cmd", "--stdio"},
       on_attach = on_attach,
       capabilities = capabilities,
     }
@@ -322,7 +322,7 @@ vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_stab()',{expr = true, norem
 vim.g.completion_confirm_key = ""
 vim.g.completion_timer_cycle = 1
 vim.g.completion_trigger_on_delete = 1
-vim.g.completion_matching_strategy_list = { "substring", "fuzzy" }
+vim.g.completion_matching_strategy_list = {"substring", "fuzzy"}
 vim.g.completion_matching_smart_case = 1
 vim.g.completion_sorting = "length"
 
@@ -400,7 +400,7 @@ require('nvim-treesitter.configs').setup {
   },
 }
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
+parser_config.tsx.used_by = {"javascript", "typescript.tsx"}
 
 
 
@@ -421,7 +421,7 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid, when inside an event handler
 " (happens when dropping a file on gvim) and for a commit message (it's
-" Likely a different one than last time).
+" likely a different one than last time).
 autocmd BufReadPost *
       \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
       \ |   exe "normal! g`\""
