@@ -48,15 +48,15 @@ call plug#end()
 " <-- Functions
 
 function! TabSweep()
-  " remember current tab number
+  " Remember current tab number
   let currentTabNumber=tabpagenr()
 
-  " cycle through all the tabs
+  " Cycle through all the tabs
   for i in range(1, tabpagenr('$'))
     execute "normal " . i . "gt"
   endfor
 
-  " go back to original tab
+  " Go back to original tab
   execute "normal " . currentTabNumber . "gt"
 endfunction
 
@@ -66,26 +66,26 @@ function! SaveSess()
 endfunction
 
 function! RestoreSess()
-  " @% == "" is to check if vim is in the [No Name] buffer or not
-  " if it is not then dont restore session as user has vimmed into a file
+  " @% == "" Is to check if vim is in the [No Name] buffer or not
+  " If it is not then dont restore session as user has vimmed into a file
   if @% != "" | return 0 | endif
 
-  " set g:saveSession to 1 so that vim saves session when exit
+  " Set g:saveSession to 1 so that vim saves session when exit
   let g:saveSession=1
 
-  " load session if session file is found on vim enter
+  " Load session if session file is found on vim enter
   if filereadable('Session.vim') | execute 'source Session.vim' | endif
 
-  " call tabsweep to refresh the tab names
+  " Call tabsweep to refresh the tab names
   call timer_start(0, {-> TabSweep()})
 endfunction
 
 function! OpenInTab(node)
-  " switch to file window to get file name
+  " Switch to file window to get file name
   wincmd l
 
-  " if the current file name is [No Name], then open the file in the current tab
-  " otherwise, open the file in a new tab
+  " If the current file name is [No Name], then open the file in the current tab
+  " Otherwise, open the file in a new tab
   if @% == ""
     wincmd h
     call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
@@ -94,7 +94,7 @@ function! OpenInTab(node)
     call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
   endif
 
-  " call tabsweep to refresh the tab names
+  " Call tabsweep to refresh the tab names
   call timer_start(0, {-> TabSweep()})
 endfunction
 
@@ -105,10 +105,10 @@ endfunction
 
 " <-- Keybinds
 
-" use space as leader key
+" Use space as leader key
 map <Space>  <Leader>
 
-" set j and k to move up/down one DISPLAYED line (ignore wrapping)
+" Set j and k to move up/down one DISPLAYED line (ignore wrapping)
 nnoremap k  gk
 nnoremap j  gj
 vnoremap k  gk
@@ -124,25 +124,25 @@ vnoremap <C-j>  5j
 vnoremap <C-l>  5l
 vnoremap <C-h>  5h
 
-" set ctrl+bksp and ctrl+w to delete whole word properly
+" Set ctrl+bksp and ctrl+w to delete whole word properly
 inoremap <C-BS>  <Esc>gi<C-w>
 inoremap <C-h>   <Esc>gi<C-w>
 inoremap <C-w>   <Esc>gi<C-w>
 cnoremap <C-BS>  <C-w>
 cnoremap <C-h>   <C-w>
 
-" tab new/close/navigate
+" Tab new/close/navigate
 nnoremap <silent> <C-Ins>     :tabnew<CR>
 nnoremap <silent> <C-Del>     :tabclose<CR>
 for i in range(1, 9)
   execute "nnoremap \<A-" . i . "> " . i . "gt"
 endfor
 
-" toggles NERDTree
+" Toggles NERDTree
 nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 
-" bind f5 to run run.sh file (if it exists)
+" Bind f5 to run run.sh file (if it exists)
 nnoremap <f5>                 :wa<CR>:!run.sh<CR><CR>
 inoremap <f5>            <Esc>:wa<CR>:!run.sh<CR><CR>
 
@@ -168,14 +168,14 @@ nnoremap <silent> <Leader>D   :sp<CR>:lua vim.lsp.buf.definition()<CR>
 
 " <-- Settings
 
-" theme/colorscheme
+" Theme/colorscheme
 colorscheme tokyo-metro
 colorscheme stellarized
 
-" enable syntax highlighting
+" Enable syntax highlighting
 syntax enable
 
-" hide ~ on the number line
+" Hide ~ on the number line
 let &fcs='eob: '
 
 " NERDTree configuration
@@ -190,51 +190,51 @@ let g:nerdtree_tabs_synchronize_focus=0
 " FZF configuration
 let g:fzf_action={'Enter': 'tab split'}
 
-" save undo history (make a new dir called undohistory in nvim config)
+" Save undo history (make a new dir called undohistory in nvim config)
 set undofile
 set undodir=~/.config/nvim/undohistory
 
-" enables mouse support
+" Enables mouse support
 set mouse=a
 
-" sets tab to 2 spaces
+" Sets tab to 2 spaces
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" always shows the tabline
+" Always shows the tabline
 set showtabline=2
 
-" disables the sign column 
+" Disables the sign column 
 set signcolumn=no
 
-" set shared clipboard
+" Set shared clipboard
 set clipboard^=unnamed,unnamedplus
 
-" don't redraw screen every time
+" Don't redraw screen every time
 set lazyredraw
 
-" disable swap files
+" Disable swap files
 set noswapfile
 
-" highlights the line the cursor is on
+" Highlights the line the cursor is on
 set cursorline 
 
-" adds column numbers to the left (relative)
+" Adds column numbers to the left (relative)
 set number
 set relativenumber
 
-" basically allows vim to show colors
+" Basically allows vim to show colors
 set termguicolors
 
 " Don't save options
 set sessionoptions-=options  
 
-" folding
+" Folding
 set foldmethod=marker
 set foldmarker=<--,-->
 
-" enable smart case insensitive searches
+" Enable smart case insensitive searches
 set ignorecase
 set smartcase
 
@@ -412,16 +412,16 @@ EOF
 
 " <-- AutoCommands
 
-" set pwd to current directory
+" Set pwd to current directory
 silent! lcd %:p:h
 
-" formatting options to turn off some annoying things
+" Formatting options to turn off some annoying things
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid, when inside an event handler
 " (happens when dropping a file on gvim) and for a commit message (it's
-" likely a different one than last time).
+" Likely a different one than last time).
 autocmd BufReadPost *
       \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
       \ |   exe "normal! g`\""
