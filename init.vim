@@ -147,9 +147,9 @@ nnoremap <f5>                 :wa<CR>:!run.sh<CR><CR>
 inoremap <f5>            <Esc>:wa<CR>:!run.sh<CR><CR>
 
 " Terminal
-nnoremap <silent> <C-t>  :tabnew<CR>:term<CR>i
-tnoremap <silent> <C-t>  <C-\><C-n>:tabclose<CR>
-inoremap <silent> <C-t>  <Esc>:tabnew<CR>:term<CR>i
+nnoremap <silent> <C-t>       :tabnew<CR>:term<CR>i
+tnoremap <silent> <C-t>       <C-\><C-n>:tabclose<CR>
+inoremap <silent> <C-t>       <Esc>:tabnew<CR>:term<CR>i
 
 " FZF
 nnoremap <silent> <Leader>f   :Files<CR>
