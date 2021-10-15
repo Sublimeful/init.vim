@@ -84,9 +84,10 @@ function! OpenInTab(node)
   " Switch to file window to get file name
   wincmd l
 
-  " If the current file name is [No Name], then open the file in the current tab
+  " If the current file name is [No Name] and not modified
+  " Then open the file in the current tab
   " Otherwise, open the file in a new tab
-  if @% == ""
+  if @% == "" && !&modified
     wincmd h
     call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
   else
@@ -140,16 +141,16 @@ endfor
 
 " Toggles NERDTree
 nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
-inoremap <silent> <C-b>       <Esc>:NERDTreeMirrorToggle<CR><C-w>w
+inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 
 " Bind f5 to run run.sh file (if it exists)
 nnoremap <silent> <f5>        :wa<CR>:!run.sh<CR><CR>
-inoremap <silent> <f5>        <Esc>:wa<CR>:!run.sh<CR><CR>
+inoremap <silent> <f5>   <Esc>:wa<CR>:!run.sh<CR><CR>
 
 " Terminal
-nnoremap <silent> <C-t>       :tabnew<CR>:term<CR>i
-tnoremap <silent> <C-t>       <C-\><C-n>:silent!tabclose<CR>
-inoremap <silent> <C-t>       <Esc>:tabnew<CR>:term<CR>i
+nnoremap <silent> <C-t>       :if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
+tnoremap <silent> <C-t>       <C-\><C-n>:silent! tabclose<CR>
+inoremap <silent> <C-t>  <Esc>:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
 
 " FZF
 nnoremap <silent> <Leader>f   :Files<CR>
