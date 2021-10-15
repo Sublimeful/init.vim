@@ -286,6 +286,7 @@ local nvim_lsp = require("lspconfig")
 local on_attach = function(client, bufnr)
   require('completion').on_attach(client, bufnr)
 end
+
 for _, lsp in ipairs(servers) do
   if lsp == 'html' then
     local capabilities = vim.lsp.protocol.make_client_capabilities()
