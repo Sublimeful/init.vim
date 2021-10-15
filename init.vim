@@ -133,11 +133,11 @@ cnoremap <C-BS>  <C-w>
 cnoremap <C-h>   <C-w>
 
 " Tab new/close/navigate
-nnoremap <silent> <C-Ins>     :tabnew<CR>
-nnoremap <silent> <C-Del>     :tabclose<CR>
 for i in range(1, 9)
   execute "nnoremap \<A-" . i . "> " . i . "gt"
 endfor
+nnoremap <silent> <C-Ins>     :tabnew<CR>
+nnoremap <silent> <C-Del>     :tabclose<CR>
 
 " Toggles NERDTree
 nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
