@@ -149,8 +149,8 @@ inoremap <silent> <f5>   <Esc>:wa<CR>:!run.sh<CR><CR>
 
 " Terminal
 nnoremap <silent> <C-t>       :if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
-tnoremap <silent> <C-t>       <C-\><C-n>:silent! tabclose<CR>
 inoremap <silent> <C-t>  <Esc>:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
+tnoremap <silent> <C-t>       <C-\><C-n>:silent! tabclose<CR>
 
 " FZF
 nnoremap <silent> <Leader>f   :Files<CR>
