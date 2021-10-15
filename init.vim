@@ -140,11 +140,11 @@ endfor
 
 " Toggles NERDTree
 nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
-inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
+inoremap <silent> <C-b>       <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 
 " Bind f5 to run run.sh file (if it exists)
-nnoremap <f5>                 :wa<CR>:!run.sh<CR><CR>
-inoremap <f5>            <Esc>:wa<CR>:!run.sh<CR><CR>
+nnoremap <silent> <f5>        :wa<CR>:!run.sh<CR><CR>
+inoremap <silent> <f5>        <Esc>:wa<CR>:!run.sh<CR><CR>
 
 " Terminal
 nnoremap <silent> <C-t>       :tabnew<CR>:term<CR>i
