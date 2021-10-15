@@ -132,7 +132,7 @@ inoremap <C-w>   <Esc>gi<C-w>
 cnoremap <C-BS>  <C-w>
 cnoremap <C-h>   <C-w>
 
-" Tab new/close/navigate
+" Tab navigate/new/close
 for i in range(1, 9)
   execute "nnoremap \<A-" . i . "> " . i . "gt"
 endfor
