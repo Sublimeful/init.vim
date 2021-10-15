@@ -17,7 +17,7 @@ Plug 'tpope/vim-obsession'
 Plug 'hoob3rt/lualine.nvim'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'ms-jpq/coq_nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf.vim'
@@ -124,13 +124,6 @@ vnoremap <C-k>  5k
 vnoremap <C-j>  5j
 vnoremap <C-l>  5l
 vnoremap <C-h>  5h
-
-" Set ctrl+bksp and ctrl+w to delete whole word properly
-inoremap <C-BS>  <Esc>gi<C-w>
-inoremap <C-h>   <Esc>gi<C-w>
-inoremap <C-w>   <Esc>gi<C-w>
-cnoremap <C-BS>  <C-w>
-cnoremap <C-h>   <C-w>
 
 " Tab navigate/new/close
 for i in range(1, 9)
@@ -281,27 +274,15 @@ require('lualine').setup {
 
 
 -- LspConfig & Completion
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html'}
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd'}
 local nvim_lsp = require("lspconfig")
-local on_attach = function(client, bufnr)
-  require('completion').on_attach(client, bufnr)
-end
+local coq = require("coq")
 
 for _, lsp in ipairs(servers) do
-  if lsp == 'html' then
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    nvim_lsp[lsp].setup {
-      cmd = {"html-languageserver.cmd", "--stdio"},
-      on_attach = on_attach,
-      capabilities = capabilities,
-    }
-  else
-    nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-    }
-  end
+  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities())
 end
+
+vim.cmd('COQnow -s')
 
 
 
@@ -318,18 +299,8 @@ function _G.smart_stab()
     return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
 end
 
-vim.api.nvim_set_keymap('i', '<Tab>',   'v:lua.smart_tab()', {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_stab()',{expr = true, noremap = true})
-
-vim.g.completion_confirm_key = ""
-vim.g.completion_timer_cycle = 1
-vim.g.completion_trigger_on_delete = 1
-vim.g.completion_matching_strategy_list = {"substring", "fuzzy"}
-vim.g.completion_matching_smart_case = 1
-vim.g.completion_sorting = "length"
-
-vim.o.completeopt = 'menuone,noselect'
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.api.nvim_set_keymap('i', '<Tab>',   'v:lua.smart_tab()',  {expr = true, noremap = true})
+vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_stab()', {expr = true, noremap = true})
 
 
 
