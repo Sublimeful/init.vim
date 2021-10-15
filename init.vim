@@ -281,11 +281,12 @@ require('lualine').setup {
 
 
 -- LspConfig & Completion
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html'}
 local nvim_lsp = require("lspconfig")
 local on_attach = function(client, bufnr)
   require('completion').on_attach(client, bufnr)
 end
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'html'}
+
 for _, lsp in ipairs(servers) do
   if lsp == 'html' then
     local capabilities = vim.lsp.protocol.make_client_capabilities()
