@@ -148,7 +148,7 @@ inoremap <silent> <f5>        <Esc>:wa<CR>:!run.sh<CR><CR>
 
 " Terminal
 nnoremap <silent> <C-t>       :tabnew<CR>:term<CR>i
-tnoremap <silent> <C-t>       <C-\><C-n>:tabclose<CR>
+tnoremap <silent> <C-t>       <C-\><C-n>:silent!tabclose<CR>
 inoremap <silent> <C-t>       <Esc>:tabnew<CR>:term<CR>i
 
 " FZF
