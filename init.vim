@@ -322,9 +322,9 @@ cmp.setup({
     { name = 'buffer' },
   },
   mapping = {
-    ['<C-k>']   = cmp.mapping.scroll_docs(-4),
-    ['<C-j>']   = cmp.mapping.scroll_docs(4),
-    ['<Tab>']   = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-j>'] = cmp.mapping.scroll_docs(4),
+    ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<S-Tab>'] = cmp.mapping.select_prev_item()
   }
 })
