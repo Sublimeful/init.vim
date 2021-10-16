@@ -128,9 +128,9 @@ vnoremap <C-l>  5l
 vnoremap <C-h>  5h
 
 " Set ctrl+bksp and ctrl+w to delete whole word properly
+inoremap <C-w>   <Esc>gi<C-w>
 inoremap <C-BS>  <Esc>gi<C-w>
 inoremap <C-h>   <Esc>gi<C-w>
-inoremap <C-w>   <Esc>gi<C-w>
 cnoremap <C-BS>  <C-w>
 cnoremap <C-h>   <C-w>
 
