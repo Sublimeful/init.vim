@@ -55,11 +55,11 @@ function! TabSweep()
 
   " Cycle through all the tabs
   for i in range(1, tabpagenr('$'))
-    execute "normal ".i."gt"
+    execute "normal".i."gt"
   endfor
 
   " Go back to original tab
-  execute "normal ".t."gt"
+  execute "normal".t."gt"
 endfunction
 
 function! SaveSess()
