@@ -133,27 +133,42 @@ inoremap <C-BS>  <Esc>gi<C-w>
 inoremap <C-h>   <Esc>gi<C-w>
 cnoremap <C-BS>  <C-w>
 cnoremap <C-h>   <C-w>
+tnoremap <C-BS>  <C-w>
+tnoremap <C-h>   <C-w>
 
 " Tab navigate/new/close
 for i in range(1, 9)
-  execute "nnoremap \<A-".i.">  ".i."gt"
+  execute "nnoremap \<A-".i.">        ".i."gt"
   execute "inoremap \<A-".i.">  \<Esc>".i."gt"
+  execute "vnoremap \<A-".i.">  \<Esc>".i."gt"
+  execute "tnoremap \<A-".i.">  \<C-\>\<C-n>".i."gt"
 endfor
-nnoremap <silent> <C-Ins>     :tabnew<CR>
-nnoremap <silent> <C-Del>     :tabclose<CR>
+nnoremap <silent> <C-Ins>       :tabnew<CR>
+nnoremap <silent> <C-Del>       :tabclose<CR>
+vnoremap <silent> <C-Ins>  <Esc>:tabnew<CR>
+vnoremap <silent> <C-Del>  <Esc>:tabclose<CR>
+inoremap <silent> <C-Ins>  <Esc>:tabnew<CR>
+inoremap <silent> <C-Del>  <Esc>:tabclose<CR>
+tnoremap <silent> <C-Ins>  <C-\><C-n>:tabnew<CR>
+tnoremap <silent> <C-Del>  <C-\><C-n>:tabclose<CR>
 
 " Toggles NERDTree
 nnoremap <silent> <C-b>       :NERDTreeMirrorToggle<CR><C-w>w
+vnoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent> <C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
+tnoremap <silent> <C-b>  <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
 
 " Bind f5 to run run.sh file (if it exists)
-nnoremap <silent> <f5>        :wa<CR>:!run.sh<CR><CR>
-inoremap <silent> <f5>   <Esc>:wa<CR>:!run.sh<CR><CR>
+nnoremap <silent> <f5>        :wa<CR>:!./run.sh<CR>
+vnoremap <silent> <f5>   <Esc>:wa<CR>:!./run.sh<CR>
+inoremap <silent> <f5>   <Esc>:wa<CR>:!./run.sh<CR>
+tnoremap <silent> <f5>   <C-\><C-n>:wa<CR>:!./run.sh<CR>
 
 " Terminal
 nnoremap <silent> <C-t>       <C-w>l:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
+vnoremap <silent> <C-t>  <Esc><C-w>l:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
 inoremap <silent> <C-t>  <Esc><C-w>l:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
-tnoremap <silent> <C-t>       <C-\><C-n>:silent! tabclose<CR>
+tnoremap <silent> <C-t>  <C-\><C-n><C-w>l:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
 
 " FZF
 nnoremap <silent> <Leader>f   :Files<CR>
@@ -166,12 +181,17 @@ nnoremap <silent> <Leader>d   :lua vim.lsp.diagnostic.show_line_diagnostics()<CR
 nnoremap <silent> <Leader>D   :sp<CR>:lua vim.lsp.buf.definition()<CR>
 
 " Inline comment mapping
-vnoremap <silent><C-_>        :AutoInlineComment<CR>
 nnoremap <silent><C-_>        :AutoInlineComment<CR>
+vnoremap <silent><C-_>        :AutoInlineComment<CR>
+inoremap <silent><C-_>   <Esc>:AutoInlineComment<CR>
 
 " Block comment mapping
-vnoremap <silent><C-S-_>      :AutoBlockComment<CR>
 nnoremap <silent><C-S-_>      :AutoBlockComment<CR>
+vnoremap <silent><C-S-_>      :AutoBlockComment<CR>
+inoremap <silent><C-S-_> <Esc>:AutoBlockComment<CR>
+
+" Make <C-w>w work in Terminal mode
+tnoremap <silent><C-w>        <C-\><C-n><C-w>
 
 " --> Keybinds
 
