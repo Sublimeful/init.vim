@@ -285,8 +285,9 @@ require('lualine').setup {
 
 -- LspConfig & Completion
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd'}
-local nvim_lsp = require("lspconfig")
+local nvim_lsp = require('lspconfig')
 local cmp = require('cmp')
+
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
