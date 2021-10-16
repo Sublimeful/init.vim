@@ -356,17 +356,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 
 -- Treesitter Configuration
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
+local parsers = require("nvim-treesitter.parsers")
+local parser_config = parsers.get_parser_configs()
+parser_config.tsx.used_by = {"javascript", "typescript.tsx"}
 require('nvim-treesitter.configs').setup {
-  highlight = {
-    enable = true,
-    disable = {},
-  },
-  indent = {
-    enable = false,
-    disable = {},
-  },
   ensure_installed = {
     "tsx",
     "toml",
@@ -378,9 +371,15 @@ require('nvim-treesitter.configs').setup {
     "html",
     "scss"
   },
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = false,
+    disable = {},
+  },
 }
-
-parser_config.tsx.used_by = {"javascript", "typescript.tsx"}
 
 
 
