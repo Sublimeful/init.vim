@@ -28,8 +28,8 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'Raimondi/delimitMate'
-Plug 'Sublimeful/vim-brackets'
+Plug 'cohama/lexima.vim'
+Plug 'KarimElghamry/vim-auto-comment'
 
 
 
@@ -164,6 +164,14 @@ nnoremap <silent> <Leader>d   :lua vim.lsp.diagnostic.show_line_diagnostics()<CR
 
 " Show definition in split screen
 nnoremap <silent> <Leader>D   :sp<CR>:lua vim.lsp.buf.definition()<CR>
+
+" Inline comment mapping
+vnoremap <silent><C-_>        :AutoInlineComment<CR>
+nnoremap <silent><C-_>        :AutoInlineComment<CR>
+
+" Block comment mapping
+vnoremap <silent><C-S-_>      :AutoBlockComment<CR>
+nnoremap <silent><C-S-_>      :AutoBlockComment<CR>
 
 " --> Keybinds
 
