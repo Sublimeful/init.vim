@@ -136,7 +136,8 @@ cnoremap <C-h>   <C-w>
 
 " Tab navigate/new/close
 for i in range(1, 9)
-  execute "nnoremap \<A-" . i . "> " . i . "gt"
+  execute "nnoremap \<A-".i.">  ".i."gt"
+  execute "inoremap \<A-".i.">  \<Esc>".i."gt"
 endfor
 nnoremap <silent> <C-Ins>     :tabnew<CR>
 nnoremap <silent> <C-Del>     :tabclose<CR>
