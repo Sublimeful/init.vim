@@ -151,8 +151,8 @@ nnoremap <silent> <f5>        :wa<CR>:!run.sh<CR><CR>
 inoremap <silent> <f5>   <Esc>:wa<CR>:!run.sh<CR><CR>
 
 " Terminal
-nnoremap <silent> <C-t>       :if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
-inoremap <silent> <C-t>  <Esc>:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
+nnoremap <silent> <C-t>       <C-w>l:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
+inoremap <silent> <C-t>  <Esc><C-w>l:if @% != "" \|\| &modified<CR>tabnew<CR>endif<CR>:term<CR>i
 tnoremap <silent> <C-t>       <C-\><C-n>:silent! tabclose<CR>
 
 " FZF
