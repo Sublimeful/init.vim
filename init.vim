@@ -17,7 +17,9 @@ Plug 'tpope/vim-obsession'
 Plug 'hoob3rt/lualine.nvim'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'ms-jpq/coq_nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf.vim'
@@ -124,6 +126,13 @@ vnoremap <C-k>  5k
 vnoremap <C-j>  5j
 vnoremap <C-l>  5l
 vnoremap <C-h>  5h
+
+" Set ctrl+bksp and ctrl+w to delete whole word properly
+inoremap <C-BS>  <Esc>gi<C-w>
+inoremap <C-h>   <Esc>gi<C-w>
+inoremap <C-w>   <Esc>gi<C-w>
+cnoremap <C-BS>  <C-w>
+cnoremap <C-h>   <C-w>
 
 " Tab navigate/new/close
 for i in range(1, 9)
@@ -276,31 +285,25 @@ require('lualine').setup {
 -- LspConfig & Completion
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd'}
 local nvim_lsp = require("lspconfig")
-local coq = require("coq")
+local cmp = require('cmp')
+cmp.setup({
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  },
+  mapping = {
+    ['<C-k>']   = cmp.mapping.scroll_docs(-4),
+    ['<C-j>']   = cmp.mapping.scroll_docs(4),
+    ['<Tab>']   = cmp.mapping.select_next_item(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item()
+  }
+})
 
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup(coq.lsp_ensure_capabilities())
+  nvim_lsp[lsp].setup {
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
 end
-
-vim.cmd('COQnow -s')
-
-
-
--- Autocomplete keymaps and settings
-local function t(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-function _G.smart_tab()
-    return vim.fn.pumvisible() == 1 and t'<C-n>' or t'<Tab>'
-end
-
-function _G.smart_stab()
-    return vim.fn.pumvisible() == 1 and t'<C-p>' or t'<S-Tab>'
-end
-
-vim.api.nvim_set_keymap('i', '<Tab>',   'v:lua.smart_tab()',  {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.smart_stab()', {expr = true, noremap = true})
 
 
 
@@ -347,6 +350,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     signs = true,
   }
 )
+
 
 
 
