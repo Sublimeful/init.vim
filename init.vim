@@ -51,7 +51,7 @@ call plug#end()
 
 function! TabSweep()
   " Remember current tab number
-  let currentTabNumber=tabpagenr()
+  let t=tabpagenr()
 
   " Cycle through all the tabs
   for i in range(1, tabpagenr('$'))
@@ -59,7 +59,7 @@ function! TabSweep()
   endfor
 
   " Go back to original tab
-  execute "normal".currentTabNumber."gt"
+  execute "normal".t."gt"
 endfunction
 
 function! SaveSess()
