@@ -311,7 +311,7 @@ require('lualine').setup {
 
 
 
--- LspConfig & Completion
+-- Completion and Lsp
 local cmp = require('cmp')
 local nvim_lsp = require('lspconfig')
 local nvim_lsp_configs = require('lspconfig/configs')
