@@ -323,7 +323,7 @@ lsp_configs['asm-lsp'] = {
   default_config = {
     cmd = {"asm-lsp"},
     filetypes = {"asm", "s", "S"},
-    root_dir = lsp_util.root_pattern(lsp_util.path.dirname(fname)),
+    root_dir = lsp_util.path.dirname
   }
 }
 
