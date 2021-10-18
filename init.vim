@@ -315,13 +315,15 @@ require('lualine').setup {
 local cmp = require('cmp')
 local nvim_lsp = require('lspconfig')
 local nvim_lsp_configs = require('lspconfig/configs')
+local nvim_lsp_util = require('lspconfig/util')
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'asm-lsp'}
 
 -- Custom LspConfigs
 nvim_lsp_configs['asm-lsp'] = {
   default_config = {
     cmd = {"asm-lsp"},
-    filetypes = {"asm", "s", "S"}
+    filetypes = {"asm", "s", "S"},
+    root_dir = nvim_lsp_util.root_pattern('.git'),
   }
 }
 
