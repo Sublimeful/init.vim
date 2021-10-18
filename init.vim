@@ -323,7 +323,7 @@ nvim_lsp_configs['asm-lsp'] = {
   default_config = {
     cmd = {"asm-lsp"},
     filetypes = {"asm", "s", "S"},
-    root_dir = nvim_lsp_util.root_pattern('.git'),
+    root_dir = nvim_lsp_util.root_pattern(util.path.dirname(fname)),
   }
 }
 
