@@ -20,6 +20,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf.vim'
@@ -28,8 +29,8 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'cohama/lexima.vim'
 Plug 'KarimElghamry/vim-auto-comment'
+Plug 'Sublimeful/vim-brackets'
 
 
 
@@ -318,54 +319,35 @@ local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bas
 
 -- Completion Setup
 cmp.setup({
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-  },
   mapping = {
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
     ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<S-Tab>'] = cmp.mapping.select_prev_item()
-  }
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<C-e>'] = cmp.mapping.close(),
+  },
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+  },
 })
 
 for _, server in ipairs(servers) do
   lsp[server].setup {
+    on_attach = function(client, bufnr)
+                  require("lsp_signature").on_attach({
+                    bind = true,
+                    hint_enable = false,
+                    max_height = 3,
+                    max_width = -1,
+                    handler_opts = {
+                      border = "none"
+                    },
+                  }, bufnr) 
+                end,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
 end
-
-
-
--- Custom completion icons
-require('vim.lsp.protocol').CompletionItemKind = {
-  '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
-  '', -- Field
-  '', -- Variable
-  '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
-  '', -- Property
-  '', -- Unit
-  '', -- Value
-  '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
-  '', -- Color
-  '', -- File
-  '', -- Reference
-  '', -- Folder
-  '', -- EnumMember
-  '', -- Constant
-  '', -- Struct
-  '', -- Event
-  'ﬦ', -- Operator
-  '', -- TypeParameter
-}
 
 
 
