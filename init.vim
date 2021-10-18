@@ -312,10 +312,20 @@ require('lualine').setup {
 
 
 -- LspConfig & Completion
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd'}
-local nvim_lsp = require('lspconfig')
 local cmp = require('cmp')
+local nvim_lsp = require('lspconfig')
+local nvim_lsp_configs = require('lspconfig/configs')
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'asm-lsp'}
 
+-- Custom LspConfigs
+nvim_lsp_configs['asm-lsp'] = {
+  default_config = {
+    cmd = {"asm-lsp"},
+    filetypes = {"asm", "s", "S"}
+  }
+}
+
+-- AutoComplete Setup
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
