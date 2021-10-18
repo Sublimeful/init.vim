@@ -312,20 +312,11 @@ require('lualine').setup {
 
 
 -- Lsp/Completion
-local cmp = require('cmp')
 local lsp = require('lspconfig')
 local lsp_configs = require('lspconfig/configs')
 local lsp_util = require('lspconfig/util')
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'asm-lsp'}
-
--- Custom LspConfigs
-lsp_configs['asm-lsp'] = {
-  default_config = {
-    cmd = {"asm-lsp"},
-    filetypes = {"asm", "s", "S"},
-    root_dir = lsp_util.path.dirname
-  }
-}
+local cmp = require('cmp')
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls'}
 
 -- Completion Setup
 cmp.setup({
