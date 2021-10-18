@@ -325,7 +325,7 @@ nvim_lsp_configs['asm-lsp'] = {
   }
 }
 
--- AutoComplete Setup
+-- Completion Setup
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
