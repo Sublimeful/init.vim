@@ -335,8 +335,10 @@ cmp.setup({
   formatting = {
     format = require('lspkind').cmp_format(),
   },
-  comparaters = {
-    cmp.config.compare.score,
+  sorting = {
+    comparators = {
+      cmp.config.compare.score,
+    }
   }
 })
 
