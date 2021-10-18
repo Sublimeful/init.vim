@@ -311,11 +311,9 @@ require('lualine').setup {
 
 
 
--- Lsp/Completion
-local lsp = require('lspconfig')
-local lsp_configs = require('lspconfig/configs')
-local lsp_util = require('lspconfig/util')
+-- Completion/LSP
 local cmp = require('cmp')
+local lsp = require('lspconfig')
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls'}
 
 -- Completion Setup
