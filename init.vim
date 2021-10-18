@@ -31,8 +31,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'KarimElghamry/vim-auto-comment'
-Plug 'Raimondi/delimitMate'
-Plug 'Sublimeful/vim-brackets'
 
 
 
