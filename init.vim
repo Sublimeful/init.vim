@@ -343,7 +343,6 @@ for _, server in ipairs(servers) do
         require("lsp_signature").on_attach({
           bind = true,
           hint_enable = false,
-          max_height = 3,
           max_width = -1,
           handler_opts = {
             border = "none"
