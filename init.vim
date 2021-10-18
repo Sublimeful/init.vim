@@ -21,6 +21,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'onsails/lspkind-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'junegunn/fzf.vim'
@@ -30,6 +31,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'KarimElghamry/vim-auto-comment'
+Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
 
 
@@ -330,21 +332,24 @@ cmp.setup({
     {name = 'nvim_lsp'},
     {name = 'buffer'},
   },
+  formatting = {
+    format = require('lspkind').cmp_format(),
+  }
 })
 
 for _, server in ipairs(servers) do
   lsp[server].setup {
     on_attach = function(client, bufnr)
-                  require("lsp_signature").on_attach({
-                    bind = true,
-                    hint_enable = false,
-                    max_height = 3,
-                    max_width = -1,
-                    handler_opts = {
-                      border = "none"
-                    },
-                  }, bufnr) 
-                end,
+        require("lsp_signature").on_attach({
+          bind = true,
+          hint_enable = false,
+          max_height = 3,
+          max_width = -1,
+          handler_opts = {
+            border = "none"
+          },
+        }, bufnr) 
+    end,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
 end
