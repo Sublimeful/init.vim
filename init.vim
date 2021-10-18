@@ -322,8 +322,8 @@ local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bas
 -- Completion Setup
 cmp.setup({
   mapping = {
-    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
+    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<M-j>'] = cmp.mapping.select_next_item(),
     ['<M-k>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
