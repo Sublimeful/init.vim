@@ -313,17 +313,17 @@ require('lualine').setup {
 
 -- Lsp/Completion
 local cmp = require('cmp')
-local nvim_lsp = require('lspconfig')
-local nvim_lsp_configs = require('lspconfig/configs')
-local nvim_lsp_util = require('lspconfig/util')
+local lsp = require('lspconfig')
+local lsp_configs = require('lspconfig/configs')
+local lsp_util = require('lspconfig/util')
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'asm-lsp'}
 
 -- Custom LspConfigs
-nvim_lsp_configs['asm-lsp'] = {
+lsp_configs['asm-lsp'] = {
   default_config = {
     cmd = {"asm-lsp"},
     filetypes = {"asm", "s", "S"},
-    root_dir = nvim_lsp_util.root_pattern(util.path.dirname(fname)),
+    root_dir = lsp_util.root_pattern(lsp_util.path.dirname(fname)),
   }
 }
 
@@ -341,8 +341,8 @@ cmp.setup({
   }
 })
 
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+for _, server in ipairs(servers) do
+  lsp[server].setup {
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
 end
