@@ -174,10 +174,14 @@ inoremap <silent><f5>     <Esc>:wa<CR>:!./run.sh<CR>
 tnoremap <silent><f5>     <C-\><C-n>:wa<CR>:!./run.sh<CR>
 
 " Terminal
-nnoremap <silent><C-t>       <C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<CR>endif<CR>:term<CR>i
-vnoremap <silent><C-t>  <Esc><C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<CR>endif<CR>:term<CR>i
-inoremap <silent><C-t>  <Esc><C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<CR>endif<CR>:term<CR>i
-tnoremap <silent><C-t>  <C-\><C-n><C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<CR>endif<CR>:term<CR>i
+nnoremap <silent><C-t>         :if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+nnoremap <silent><A-t>         :if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+vnoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+vnoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+inoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+inoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+tnoremap <silent><C-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
 
 " FZF
 nnoremap <silent><Leader>f     :Files<CR>
