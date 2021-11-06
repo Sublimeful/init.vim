@@ -197,10 +197,10 @@ inoremap <silent><C-S-_>  <Esc>:AutoBlockComment<CR>
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
 " <A-;> as escape key
-nnoremap <A-;> <Esc>
-vnoremap <A-;> <Esc>
-inoremap <A-;> <Esc>
-tnoremap <A-;> <C-\><C-n>
+nnoremap <A-;>  <Esc>
+vnoremap <A-;>  <Esc>
+inoremap <A-;>  <Esc>
+tnoremap <A-;>  <C-\><C-n>
 
 " --> Keybinds
 
