@@ -20,6 +20,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -327,19 +329,26 @@ require('lualine').setup {
 -- Completion/LSP
 local cmp = require('cmp')
 local lsp = require('lspconfig')
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls'}
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls'}
 
 -- Completion Setup
 cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
   mapping = {
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
     ['<A-j>'] = cmp.mapping.select_next_item(),
     ['<A-k>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
+    ['<Tab>'] = cmp.mapping.confirm({select = true}),
   },
   sources = {
     {name = 'nvim_lsp'},
+    {name = 'vsnip'},
     {name = 'buffer'},
   },
   formatting = {
