@@ -130,6 +130,12 @@ vnoremap <C-j>  5j
 vnoremap <C-l>  5l
 vnoremap <C-h>  5h
 
+" <A-;> as escape key
+nnoremap <A-;>  <Esc>
+vnoremap <A-;>  <Esc>
+inoremap <A-;>  <Esc>
+tnoremap <A-;>  <C-\><C-n>
+
 " Set ctrl+bksp and ctrl+w to delete whole word properly
 inoremap <C-w>   <Esc>gi<C-w>
 inoremap <C-BS>  <Esc>gi<C-w>
@@ -156,16 +162,16 @@ tnoremap <silent><C-Ins>  <C-\><C-n>:tabnew<CR>
 tnoremap <silent><C-Del>  <C-\><C-n>:tabclose<CR>
 
 " Toggles NERDTree
-nnoremap <silent><C-b>       :NERDTreeMirrorToggle<CR><C-w>w
-vnoremap <silent><C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
-inoremap <silent><C-b>  <Esc>:NERDTreeMirrorToggle<CR><C-w>w
-tnoremap <silent><C-b>  <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
+nnoremap <silent><C-b>         :NERDTreeMirrorToggle<CR><C-w>w
+vnoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
+inoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
+tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
 
 " Bind f5 to run run.sh file (if it exists)
-nnoremap <silent><f5>       :wa<CR>:!./run.sh<CR>
-vnoremap <silent><f5>  <Esc>:wa<CR>:!./run.sh<CR>
-inoremap <silent><f5>  <Esc>:wa<CR>:!./run.sh<CR>
-tnoremap <silent><f5>  <C-\><C-n>:wa<CR>:!./run.sh<CR>
+nnoremap <silent><f5>          :wa<CR>:!./run.sh<CR>
+vnoremap <silent><f5>     <Esc>:wa<CR>:!./run.sh<CR>
+inoremap <silent><f5>     <Esc>:wa<CR>:!./run.sh<CR>
+tnoremap <silent><f5>     <C-\><C-n>:wa<CR>:!./run.sh<CR>
 
 " Terminal
 nnoremap <silent><C-t>       <C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<CR>endif<CR>:term<CR>i
@@ -174,19 +180,19 @@ inoremap <silent><C-t>  <Esc><C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<C
 tnoremap <silent><C-t>  <C-\><C-n><C-w>l:if @% != "" \|\| &modified<CR>sp\|wincmd j<CR>endif<CR>:term<CR>i
 
 " FZF
-nnoremap <silent><Leader>f  :Files<CR>
-nnoremap <silent><C-_>      :Rg<CR>
+nnoremap <silent><Leader>f     :Files<CR>
+nnoremap <silent><C-_>         :Rg<CR>
 
 " Show diagnostics in popup
-nnoremap <silent><Leader>d  :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
 " Show definition in split screen
-nnoremap <silent><Leader>D  :sp<CR>:lua vim.lsp.buf.definition()<CR>
+nnoremap <silent><Leader>D     :sp<CR>:lua vim.lsp.buf.definition()<CR>
 
 " Inline comment mapping
-nnoremap <silent><C-_>       :AutoInlineComment<CR>
-vnoremap <silent><C-_>       :AutoInlineComment<CR>
-inoremap <silent><C-_>  <Esc>:AutoInlineComment<CR>
+nnoremap <silent><C-_>         :AutoInlineComment<CR>
+vnoremap <silent><C-_>         :AutoInlineComment<CR>
+inoremap <silent><C-_>    <Esc>:AutoInlineComment<CR>
 
 " Block comment m apping
 nnoremap <silent><C-S-_>       :AutoBlockComment<CR>
@@ -195,12 +201,6 @@ inoremap <silent><C-S-_>  <Esc>:AutoBlockComment<CR>
 
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
-
-" <A-;> as escape key
-nnoremap <A-;>  <Esc>
-vnoremap <A-;>  <Esc>
-inoremap <A-;>  <Esc>
-tnoremap <A-;>  <C-\><C-n>
 
 " --> Keybinds
 
@@ -330,8 +330,8 @@ cmp.setup({
   mapping = {
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
-    ['<M-j>'] = cmp.mapping.select_next_item(),
-    ['<M-k>'] = cmp.mapping.select_prev_item(),
+    ['<A-j>'] = cmp.mapping.select_next_item(),
+    ['<A-k>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
   },
   sources = {
