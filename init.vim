@@ -196,6 +196,17 @@ inoremap <silent><C-S-_>  <Esc>:AutoBlockComment<CR>
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
+" <A-;> as escape key
+nnoremap <A-;> <Esc>
+vnoremap <A-;> <Esc>
+inoremap <A-;> <Esc>
+tnoremap <A-;> <C-\><C-n>
+
+" Completely unbind <C-e>
+nnoremap <C-e> <Nop>
+vnoremap <C-e> <Nop>
+inoremap <C-e> <Nop>
+
 " --> Keybinds
 
 
@@ -435,7 +446,6 @@ autocmd VimLeave *        call SaveSess()
 autocmd VimEnter * nested call RestoreSess()
 
 " --> AutoCommands
-
 
 
 
