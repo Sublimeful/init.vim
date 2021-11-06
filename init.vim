@@ -239,6 +239,9 @@ let g:fzf_action={'Enter': 'tab split'}
 set undofile
 set undodir=~/.config/nvim/undohistory
 
+" Prevent words from wrapping
+set nowrap
+
 " Enables mouse support
 set mouse=a
 
@@ -282,9 +285,6 @@ set foldmarker=<--,-->
 " Enable smart case insensitive searches
 set ignorecase
 set smartcase
-
-" Set nowrap so that terminals do not explode
-set nowrap
 
 " --> Settings
 
