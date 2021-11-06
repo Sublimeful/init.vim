@@ -229,9 +229,6 @@ let g:fzf_action={'Enter': 'tab split'}
 set undofile
 set undodir=~/.config/nvim/undohistory
 
-" Enables mouse support
-set mouse=a
-
 " Sets tab to 2 spaces
 set tabstop=2
 set shiftwidth=2
