@@ -283,6 +283,9 @@ set foldmarker=<--,-->
 set ignorecase
 set smartcase
 
+" Set nowrap so that terminals do not explode
+set nowrap
+
 " --> Settings
 
 
