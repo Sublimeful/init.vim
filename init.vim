@@ -202,11 +202,6 @@ vnoremap <A-;> <Esc>
 inoremap <A-;> <Esc>
 tnoremap <A-;> <C-\><C-n>
 
-" Completely unbind <C-e>
-nnoremap <C-e> <Nop>
-vnoremap <C-e> <Nop>
-inoremap <C-e> <Nop>
-
 " --> Keybinds
 
 
