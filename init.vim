@@ -33,8 +33,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'KarimElghamry/vim-auto-comment'
-Plug 'Raimondi/delimitMate'
-Plug 'Sublimeful/vim-brackets'
+Plug 'cohama/lexima.vim'
 
 
 
@@ -444,6 +443,9 @@ autocmd BufReadPost *
       \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
       \ |   exe "normal! g`\""
       \ | endif
+
+" Enter Terminal mode automatically if entering a buffer with terminal type
+autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! call timer_start(80, {-> feedkeys("i")}) | endif
 
 " Autocommands for opening files in NERDTree
 autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': 'FileNode', 'callback': 'OpenInTab', 'override': 1})
