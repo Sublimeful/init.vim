@@ -444,7 +444,8 @@ autocmd BufReadPost *
       \ | endif
 
 " Enter Terminal mode automatically if entering a buffer with terminal type
-autocmd BufWinEnter,WinEnter * if &buftype == 'terminal' | silent! call timer_start(180, {-> feedkeys("i")}) | endif
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
 
 " Autocommands for opening files in NERDTree
 autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': 'FileNode', 'callback': 'OpenInTab', 'override': 1})
