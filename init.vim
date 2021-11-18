@@ -167,12 +167,6 @@ vnoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
 
-" Bind f5 to run run.sh file (if it exists)
-nnoremap <silent><f5>          :wa<CR>:!./run.sh<CR>
-vnoremap <silent><f5>     <Esc>:wa<CR>:!./run.sh<CR>
-inoremap <silent><f5>     <Esc>:wa<CR>:!./run.sh<CR>
-tnoremap <silent><f5>     <C-\><C-n>:wa<CR>:!./run.sh<CR>
-
 " Terminal
 nnoremap <silent><C-t>         :if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
 nnoremap <silent><A-t>         :if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
@@ -442,10 +436,6 @@ autocmd BufReadPost *
       \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
       \ |   exe "normal! g`\""
       \ | endif
-
-" Enter Terminal mode automatically if entering a buffer with terminal type
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
 
 " Autocommands for opening files in NERDTree
 autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': 'FileNode', 'callback': 'OpenInTab', 'override': 1})
