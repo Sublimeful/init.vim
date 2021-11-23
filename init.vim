@@ -323,6 +323,12 @@ local cmp = require('cmp')
 local lsp = require('lspconfig')
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls'}
 
+-- Function to check if there is words before the cursor
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 -- Completion Setup
 cmp.setup({
   snippet = {
@@ -336,7 +342,13 @@ cmp.setup({
     ['<A-j>'] = cmp.mapping.select_next_item(),
     ['<A-k>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<Tab>'] = cmp.mapping.confirm({select = true}),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() and has_words_before() then
+        cmp.mapping.confirm({select = true})
+      else
+        fallback()
+      end
+    end),
   },
   sources = {
     {name = 'nvim_lsp'},
