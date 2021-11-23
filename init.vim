@@ -344,7 +344,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
-        cmp.mapping.confirm({select = true})
+        cmp.confirm({select = true})
       else
         fallback()
       end
