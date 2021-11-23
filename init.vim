@@ -35,6 +35,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'KarimElghamry/vim-auto-comment'
 Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'nightsense/stellarized'
 Plug 'koirand/tokyo-metro.vim'
