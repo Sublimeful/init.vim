@@ -131,11 +131,15 @@ vnoremap <C-j>  5j
 vnoremap <C-l>  5l
 vnoremap <C-h>  5h
 
-" <A-;> as escape key
+" <A-;>/<A-'> as escape key
 nnoremap <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
 inoremap <A-;>  <Esc>
 tnoremap <A-;>  <C-\><C-n>
+nnoremap <A-'>  <Esc>
+vnoremap <A-'>  <Esc>
+inoremap <A-'>  <Esc>
+tnoremap <A-'>  <C-\><C-n>
 
 " Set ctrl+bksp and ctrl+w to delete whole word properly
 inoremap <C-w>   <Esc>gi<C-w>
