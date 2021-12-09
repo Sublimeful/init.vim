@@ -37,13 +37,13 @@ Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
 
-Plug 'doums/darcula'
 Plug 'nightsense/stellarized'
 Plug 'koirand/tokyo-metro.vim'
 Plug 'rafalbromirski/vim-aurora'
 Plug 'bignimbus/pop-punk.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ayu-theme/ayu-vim'
+Plug 'doums/darcula'
 
 call plug#end()
 
