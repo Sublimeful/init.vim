@@ -37,6 +37,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
 
+Plug 'doums/darcula'
 Plug 'nightsense/stellarized'
 Plug 'koirand/tokyo-metro.vim'
 Plug 'rafalbromirski/vim-aurora'
@@ -213,8 +214,9 @@ tnoremap <silent><C-w>  <C-\><C-n><C-w>
 " <-- Settings
 
 " Theme/colorscheme
-colorscheme tokyo-metro
-colorscheme stellarized
+" colorscheme tokyo-metro
+" colorscheme stellarized
+colorscheme darcula
 
 " Enable syntax highlighting
 syntax enable
@@ -261,9 +263,6 @@ set lazyredraw
 " Disable swap files
 set noswapfile
 
-" Highlights the line the cursor is on
-set cursorline 
-
 " Adds column numbers to the left (relative)
 set number
 set relativenumber
@@ -296,7 +295,7 @@ lua << EOF
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'palenight',
+    theme = 'gruvbox_dark',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
