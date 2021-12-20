@@ -136,10 +136,12 @@ vnoremap <C-h>  5h
 nnoremap <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
 inoremap <A-;>  <Esc>
+snoremap <A-;>  <Esc>
 tnoremap <A-;>  <C-\><C-n>
 nnoremap <A-'>  <Esc>
 vnoremap <A-'>  <Esc>
 inoremap <A-'>  <Esc>
+snoremap <A-;>  <Esc>
 tnoremap <A-'>  <C-\><C-n>
 
 " Set ctrl+bksp and ctrl+w to delete whole word properly
@@ -188,10 +190,10 @@ nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><C-_>         :Rg<CR>
 
 " vsnip
-smap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
-smap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
 imap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
 imap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
+smap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
+smap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
 
 " Show diagnostics in popup
 nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
