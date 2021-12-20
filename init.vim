@@ -188,10 +188,10 @@ nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><C-_>         :Rg<CR>
 
 " vsnip
-inoremap <expr><Tab>    pumvisible()       ? "<C-n>"                   : vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<Tab>"
-inoremap <expr><S-Tab>  pumvisible()       ? "<C-p>"                   : vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<S-Tab>"
-snoremap <expr><Tab>    vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<Tab>"
-snoremap <expr><S-Tab>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<S-Tab>"
+smap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
+smap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
+imap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
+imap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
 
 " Show diagnostics in popup
 nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
