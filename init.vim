@@ -187,6 +187,12 @@ tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w
 nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><C-_>         :Rg<CR>
 
+" vsnip
+inoremap <expr><Tab>    pumvisible()       ? "<C-n>"                   : vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<Tab>"
+inoremap <expr><S-Tab>  pumvisible()       ? "<C-p>"                   : vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<S-Tab>"
+snoremap <expr><Tab>    vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<Tab>"
+snoremap <expr><S-Tab>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<S-Tab>"
+
 " Show diagnostics in popup
 nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 
@@ -323,9 +329,10 @@ require('lualine').setup {
 
 
 -- Completion/LSP
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls'}
+
 local cmp = require('cmp')
 local lsp = require('lspconfig')
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls'}
 
 -- Function to check if there is words before the cursor
 local has_words_before = function()
@@ -368,6 +375,17 @@ cmp.setup({
     }
   }
 })
+
+-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+local omnisharp_bin = "C:/omnisharp-mono/OmniSharp.exe"
+local pid = vim.fn.getpid()
+
+-- C# setup (requires omnisharp-mono, also requires VSCode for Unity development)
+lsp.omnisharp.setup {
+  cmd = {omnisharp_bin, "--languageserver", "--hostPID", tostring(pid)};
+  root_dir = lsp.util.root_pattern("*.csproj", "*.sln");
+  ...
+}
 
 for _, server in ipairs(servers) do
   lsp[server].setup {
