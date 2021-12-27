@@ -37,6 +37,10 @@ Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
 
+Plug 'google/vim-searchindex'
+
+
+
 Plug 'nightsense/stellarized'
 Plug 'koirand/tokyo-metro.vim'
 Plug 'rafalbromirski/vim-aurora'
