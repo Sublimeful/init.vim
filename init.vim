@@ -210,12 +210,12 @@ nnoremap <silent><Leader>D     :sp<CR>:lua vim.lsp.buf.definition()<CR>
 " Inline comment mapping
 nnoremap <silent><C-_>         :AutoInlineComment<CR>
 vnoremap <silent><C-_>         :AutoInlineComment<CR>
-inoremap <silent><C-_>    <Esc>:AutoInlineComment<CR>
+inoremap <silent><C-_>    <C-o>:AutoInlineComment<CR>
 
 " Block comment m apping
 nnoremap <silent><C-S-_>       :AutoBlockComment<CR>
 vnoremap <silent><C-S-_>       :AutoBlockComment<CR>
-inoremap <silent><C-S-_>  <Esc>:AutoBlockComment<CR>
+inoremap <silent><C-S-_>  <C-o>:AutoBlockComment<CR>
 
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
@@ -337,7 +337,7 @@ require('lualine').setup {
 
 
 -- Completion/LSP
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls'}
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
 
 local cmp = require('cmp')
 local lsp = require('lspconfig')
