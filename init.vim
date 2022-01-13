@@ -227,11 +227,6 @@ tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
 " <-- Settings
 
-" Theme/colorscheme
-" colorscheme tokyo-metro
-" colorscheme stellarized
-colorscheme darcula
-
 " Enable syntax highlighting
 syntax enable
 
@@ -491,3 +486,5 @@ autocmd VimEnter * nested call RestoreSess()
 
 
 
+set background=light
+colorscheme PaperColor
