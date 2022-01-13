@@ -136,6 +136,18 @@ vnoremap <C-j>  5j
 vnoremap <C-l>  5l
 vnoremap <C-h>  5h
 
+" <C-;>/<C-'> as escape key
+nnoremap <C-;>  <Esc>
+vnoremap <C-;>  <Esc>
+inoremap <C-;>  <Esc>
+snoremap <C-;>  <Esc>
+tnoremap <C-;>  <C-\><C-n>
+nnoremap <C-'>  <Esc>
+vnoremap <C-'>  <Esc>
+inoremap <C-'>  <Esc>
+snoremap <C-;>  <Esc>
+tnoremap <C-'>  <C-\><C-n>
+
 " <A-;>/<A-'> as escape key
 nnoremap <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
