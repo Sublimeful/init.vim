@@ -302,7 +302,7 @@ lua << EOF
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox_dark',
+    theme = 'iceberg_light',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
@@ -481,8 +481,6 @@ autocmd VimLeave *        call SaveSess()
 autocmd VimEnter * nested call RestoreSess()
 
 " --> AutoCommands
-
-
 
 
 
