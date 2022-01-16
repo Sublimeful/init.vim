@@ -145,12 +145,12 @@ nnoremap <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
 inoremap <A-;>  <Esc>
 snoremap <A-;>  <Esc>
-tnoremap <A-;>  <C-\><C-n>
+tnoremap <A-;>  <Esc><C-\><C-n>
 nnoremap <A-'>  <Esc>
 vnoremap <A-'>  <Esc>
 inoremap <A-'>  <Esc>
 snoremap <A-'>  <Esc>
-tnoremap <A-'>  <C-\><C-n>
+tnoremap <A-'>  <Esc><C-\><C-n>
 
 " Set ctrl+bksp and ctrl+w to delete whole word properly
 inoremap <C-w>   <Esc>gi<C-w>
@@ -197,7 +197,7 @@ tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w
 
 " FZF
 nnoremap <silent><Leader>f     :Files<CR>
-nnoremap <silent><C-_>         :Rg<CR>
+nnoremap <silent><Leader>g     :Rg<CR>
 
 " vsnip
 nmap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
