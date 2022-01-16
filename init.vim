@@ -127,14 +127,18 @@ vnoremap k  gk
 vnoremap j  gj
 
 " Navigate down/up/left/right 5/10 lines/chars
-nnoremap <C-k>  5k
-nnoremap <C-j>  5j
-nnoremap <C-l>  5l
-nnoremap <C-h>  5h
-vnoremap <C-k>  5k
-vnoremap <C-j>  5j
-vnoremap <C-l>  5l
-vnoremap <C-h>  5h
+nnoremap <C-k>       5k
+nnoremap <C-j>       5j
+nnoremap <C-l>       5l
+nnoremap <C-h>       5h
+vnoremap <C-k>       5k
+vnoremap <C-j>       5j
+vnoremap <C-l>       5l
+vnoremap <C-h>       5h
+inoremap <C-k>  <Esc>5k
+inoremap <C-j>  <Esc>5j
+inoremap <C-l>  <Esc>5l
+inoremap <C-h>  <Esc>5h
 
 " <A-;>/<A-'> as escape key
 nnoremap <A-;>  <Esc>
@@ -196,10 +200,12 @@ nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><C-_>         :Rg<CR>
 
 " vsnip
-imap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
-imap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
-smap <expr><C-j>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : "<C-j>"
-smap <expr><C-l>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : "<C-l>"
+nmap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+nmap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+imap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+imap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+smap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 
 " Show diagnostics in popup
 nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
@@ -212,7 +218,7 @@ nnoremap <silent><C-_>         :AutoInlineComment<CR>
 vnoremap <silent><C-_>         :AutoInlineComment<CR>
 inoremap <silent><C-_>    <C-o>:AutoInlineComment<CR>
 
-" Block comment m apping
+" Block comment mapping
 nnoremap <silent><C-S-_>       :AutoBlockComment<CR>
 vnoremap <silent><C-S-_>       :AutoBlockComment<CR>
 inoremap <silent><C-S-_>  <C-o>:AutoBlockComment<CR>
