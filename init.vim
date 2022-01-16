@@ -206,6 +206,12 @@ imap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
 imap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 smap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
 smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+nmap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+nmap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+imap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+imap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+smap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+smap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 
 " Show diagnostics in popup
 nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
