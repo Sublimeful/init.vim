@@ -487,7 +487,7 @@ autocmd VimLeave *        call SaveSess()
 autocmd VimEnter * nested call RestoreSess()
 
 " Autocommands for highlighting trailing spaces
-autocmd ColorScheme             * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme             * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
 autocmd InsertLeave             * match     ExtraWhitespace /\s\+$/
 autocmd InsertEnter,BufWinEnter * match     ExtraWhitespace /\s\+\%#\@<!$/
 autocmd             BufWinLeave * call      clearmatches()
