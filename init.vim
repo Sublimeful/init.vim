@@ -264,7 +264,7 @@ set expandtab
 " Always shows the tabline
 set showtabline=2
 
-" Disables the sign column 
+" Disables the sign column
 set signcolumn=no
 
 " Set shared clipboard
@@ -284,7 +284,7 @@ set relativenumber
 set termguicolors
 
 " Don't save options
-set sessionoptions-=options  
+set sessionoptions-=options
 
 " Folding
 set foldmethod=marker
@@ -325,7 +325,7 @@ require('lualine').setup {
         info = ' ',
         hint = ' '
       }},
-      'encoding', 
+      'encoding',
       'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
@@ -404,7 +404,7 @@ for _, server in ipairs(servers) do
           handler_opts = {
             border = "none"
           },
-        }, bufnr) 
+        }, bufnr)
     end,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
