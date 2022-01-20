@@ -14,8 +14,6 @@ Plug 'unblevable/quick-scope'
 
 Plug 'tpope/vim-obsession'
 
-Plug 'hoob3rt/lualine.nvim'
-
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -301,37 +299,6 @@ set smartcase
 
 " <-- Lua Settings
 lua << EOF
-
-
-
--- LuaLine configuration
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'iceberg_light',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {{'diagnostics',
-      sources = {"nvim_lsp"},
-      symbols = {
-        error = ' ',
-        warn = ' ',
-        info = ' ',
-        hint = ' '
-      }},
-      'encoding',
-      'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  tabline = {},
-}
 
 
 
