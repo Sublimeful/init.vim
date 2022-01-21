@@ -181,6 +181,9 @@ vnoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
 
+" NERDTreeFind
+nnoremap <silent><Leader>c     :NERDTreeFind<CR>
+
 " Terminal
 nnoremap <silent><C-t>         :if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
 nnoremap <silent><A-t>         :if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
@@ -240,6 +243,8 @@ let &fcs='eob: '
 " NERDTree configuration
 let g:NERDTreeWinSize=30
 let g:NERDTreeChDirMode=2
+let g:NERDTreeShowHidden=1
+let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
