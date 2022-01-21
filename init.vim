@@ -181,8 +181,8 @@ vnoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 inoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
 tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
 
-" NERDTreeFind
-nnoremap <silent><Leader>c     :NERDTreeFind<CR>
+" NERDTree set to current directory
+nnoremap <silent><Leader>c     :if @% != ""  &&  @% != "NERD_tree_1"<CR>NERDTree %\|wincmd w<CR>endif<CR>
 
 " Terminal
 nnoremap <silent><C-t>         :if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
