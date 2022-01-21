@@ -104,6 +104,12 @@ function! OpenInTab(node)
     call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
   endif
 
+  " Open NERDTree in this directory
+  if !exists("g:NERDTree") || !g:NERDTree.IsOpen()
+    NERDTree %
+    wincmd l
+  endif
+
   " Call tabsweep to refresh the tab names
   call timer_start(0, {-> TabSweep()})
 endfunction
@@ -176,10 +182,10 @@ tnoremap <silent><C-Ins>  <C-\><C-n>:tabnew<CR>
 tnoremap <silent><C-Del>  <C-\><C-n>:tabclose<CR>
 
 " Toggles NERDTree
-nnoremap <silent><C-b>         :NERDTreeMirrorToggle<CR><C-w>w
-vnoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
-inoremap <silent><C-b>    <Esc>:NERDTreeMirrorToggle<CR><C-w>w
-tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeMirrorToggle<CR><C-w>w
+nnoremap <silent><C-b>         :NERDTreeToggle<CR><C-w>w
+vnoremap <silent><C-b>    <Esc>:NERDTreeToggle<CR><C-w>w
+inoremap <silent><C-b>    <Esc>:NERDTreeToggle<CR><C-w>w
+tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeToggle<CR><C-w>w
 
 " NERDTree set to current directory
 nnoremap <silent><Leader>c     :if @% != ""  &&  @% != "NERD_tree_1"<CR>NERDTree %\|wincmd w<CR>endif<CR>
