@@ -357,18 +357,41 @@ lsp.omnisharp.setup {
   ...
 }
 
+-- lsp_signature setup
+require('lsp_signature').setup({
+  debug = false,
+  bind = true,
+  doc_lines = 10,
+  floating_window = true,
+  floating_window_above_cur_line = true,
+  floating_window_off_x = 1,
+  floating_window_off_y = 1,
+  fix_pos = false,
+  hint_enable = true,
+  hint_prefix = "λ ",
+  hint_scheme = "String",
+  hi_parameter = "LspSignatureActiveParameter",
+  max_height = 12,
+  max_width = -1,
+  handler_opts = {
+    border = "none"
+  },
+  always_trigger = false,
+  auto_close_after = nil,
+  extra_trigger_chars = {},
+  zindex = 200,
+  padding = '',
+  transparency = nil,
+  shadow_blend = 36,
+  shadow_guibg = 'Black',
+  timer_interval = 200,
+  toggle_key = nil
+})
+
+-- Setup lsp for each server
 for _, server in ipairs(servers) do
   lsp[server].setup {
-    on_attach = function(client, bufnr)
-        require("lsp_signature").on_attach({
-          bind = true,
-          hint_enable = false,
-          max_width = -1,
-          handler_opts = {
-            border = "none"
-          },
-        }, bufnr)
-    end,
+    on_attach = nil,
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   }
 end
