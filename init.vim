@@ -234,6 +234,7 @@ let g:NERDTreeWinSize=30
 let g:NERDTreeChDirMode=2
 let g:NERDTreeShowHidden=1
 let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_autoclose=0
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
@@ -424,9 +425,6 @@ EOF
 
 
 " <-- AutoCommands
-
-" Set pwd to current directory
-silent! lcd %:p:h
 
 " Formatting options to turn off some annoying things
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
