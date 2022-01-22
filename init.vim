@@ -90,7 +90,7 @@ function! RestoreSess()
 endfunction
 
 function! OpenInTab(node)
-  " Open the file normally
+  " Open the file in the current tab
   call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
 
   " Call tabsweep to refresh the tab names
