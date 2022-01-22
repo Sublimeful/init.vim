@@ -97,17 +97,20 @@ function! OpenInTab(node)
   " Then open the file in the current tab
   " Otherwise, open the file in a new tab
   if @% == "" && !&modified
+    " Open node in current tab
     wincmd h
     call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
   else
+    " Get the path of the current tab
+    let path=g:NERDTree.ForCurrentTab().getRoot().path
+
+    " Open node in new tab
     wincmd h
     call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
-  endif
 
-  " Open NERDTree in this directory
-  if !exists("g:NERDTree") || !g:NERDTree.IsOpen()
-    NERDTree %
-    wincmd l
+    " Open NERDTree in new tab
+    call path.changeToDir()
+    NERDTreeToggle
   endif
 
   " Call tabsweep to refresh the tab names
