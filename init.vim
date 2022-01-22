@@ -90,28 +90,8 @@ function! RestoreSess()
 endfunction
 
 function! OpenInTab(node)
-  " Switch to file window to get file name
-  wincmd l
-
-  " If the current file name is [No Name] and not modified
-  " Then open the file in the current tab
-  " Otherwise, open the file in a new tab
-  if @% == "" && !&modified
-    " Open node in current tab
-    wincmd h
-    call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
-  else
-    " Get the path of the current tab
-    let path=g:NERDTree.ForCurrentTab().getRoot().path
-
-    " Open node in new tab
-    wincmd h
-    call a:node.activate({'reuse': 'all', 'where': 't', 'keepopen': 1})
-
-    " Open NERDTree in new tab
-    call path.changeToDir()
-    NERDTreeToggle
-  endif
+  " Open the file normally
+  call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
 
   " Call tabsweep to refresh the tab names
   call timer_start(0, {-> TabSweep()})
