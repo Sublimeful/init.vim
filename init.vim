@@ -385,7 +385,7 @@ require('lsp_signature').setup({
   floating_window_off_x = 1,
   floating_window_off_y = 1,
   fix_pos = false,
-  hint_enable = true,
+  hint_enable = false,
   hint_prefix = "λ ",
   hint_scheme = "String",
   hi_parameter = "LspSignatureActiveParameter",
@@ -497,4 +497,4 @@ autocmd             BufWinLeave * call      clearmatches()
 
 
 set background=light
-colorscheme PaperColor
+colorscheme aurora
