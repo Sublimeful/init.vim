@@ -127,6 +127,24 @@ inoremap <C-j>  <Esc>5j
 inoremap <C-l>  <Esc>5l
 inoremap <C-h>  <Esc>5h
 
+" Resize window with navigation keys
+nnoremap <A-k>       :resize -2<CR>
+nnoremap <A-j>       :resize +2<CR>
+nnoremap <A-l>       :vertical resize -5<CR>
+nnoremap <A-h>       :vertical resize +5<CR>
+vnoremap <A-k>  <Esc>:resize -2<CR>gv
+vnoremap <A-j>  <Esc>:resize +2<CR>gv
+vnoremap <A-l>  <Esc>:vertical resize -5<CR>gv
+vnoremap <A-h>  <Esc>:vertical resize +5<CR>gv
+inoremap <A-k>  <Esc>:resize -2<CR>i
+inoremap <A-j>  <Esc>:resize +2<CR>i
+inoremap <A-l>  <Esc>:vertical resize -5<CR>i
+inoremap <A-h>  <Esc>:vertical resize +5<CR>i
+tnoremap <A-k>  <C-\><C-n>:resize -2<CR>i
+tnoremap <A-j>  <C-\><C-n>:resize +2<CR>i
+tnoremap <A-l>  <C-\><C-n>:vertical resize -5<CR>i
+tnoremap <A-h>  <C-\><C-n>:vertical resize +5<CR>i
+
 " <A-;>/<A-'> as escape key
 nnoremap <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
@@ -401,7 +419,6 @@ end
 -- Diagnostic Configuration
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- This sets the spacing and the prefix, obviously.
     virtual_text = {
       spacing = 4,
       prefix = ' ',
