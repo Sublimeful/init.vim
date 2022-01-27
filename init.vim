@@ -148,12 +148,12 @@ tnoremap <A-l>  <C-\><C-n>:vertical resize -5<CR>i
 tnoremap <A-h>  <C-\><C-n>:vertical resize +5<CR>i
 
 " <A-;>/<A-'> as escape key
-nnoremap <A-;>  <Esc>
+nmap     <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
 inoremap <A-;>  <Esc>
 snoremap <A-;>  <Esc>
 tnoremap <A-;>  <Esc><C-\><C-n>
-nnoremap <A-'>  <Esc>
+nmap     <A-'>  <Esc>
 vnoremap <A-'>  <Esc>
 inoremap <A-'>  <Esc>
 snoremap <A-'>  <Esc>
