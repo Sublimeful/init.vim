@@ -30,7 +30,9 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'KarimElghamry/vim-auto-comment'
+Plug 'folke/trouble.nvim'
+
+Plug 'tomtom/tcomment_vim'
 Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
@@ -215,21 +217,19 @@ imap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 smap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
 smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 
-" Show diagnostics in popup
-nnoremap <silent><Leader>d     :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+" Trouble
+nnoremap <silent><Leader>xx  :Trouble<CR>
+nnoremap <silent><Leader>xq  :Trouble quickfix<CR>
+nnoremap <silent><Leader>xl  :Trouble loclist<CR>
 
-" Show definition in split screen
-nnoremap <silent><Leader>D     :sp<CR>:lua vim.lsp.buf.definition()<CR>
+" Show definitions of the word under the cursor
+nnoremap <silent><Leader>xd  :Trouble lsp_definitions<CR>
 
-" Inline comment mapping
-nnoremap <silent><C-_>         :AutoInlineComment<CR>
-vnoremap <silent><C-_>         :AutoInlineComment<CR>
-inoremap <silent><C-_>    <C-o>:AutoInlineComment<CR>
+" Show references of the word under the cursor
+nnoremap <silent><Leader>xr  :Trouble lsp_references<CR>
 
-" Block comment mapping
-nnoremap <silent><C-S-_>       :AutoBlockComment<CR>
-vnoremap <silent><C-S-_>       :AutoBlockComment<CR>
-inoremap <silent><C-S-_>  <C-o>:AutoBlockComment<CR>
+" Show type definitions of the word under the cursor
+nnoremap <silent><Leader>xt  :Trouble lsp_type_definitions<CR>
 
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
