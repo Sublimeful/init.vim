@@ -218,18 +218,18 @@ smap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
 smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 
 " Trouble
-nnoremap <silent><Leader>xx  :TroubleToggle<CR>
-nnoremap <silent><Leader>xq  :TroubleToggle quickfix<CR>
-nnoremap <silent><Leader>xl  :TroubleToggle loclist<CR>
+nnoremap <silent><Leader>xx  :TroubleToggle<CR><C-w><C-p>
+nnoremap <silent><Leader>xq  :TroubleToggle quickfix<CR><C-w><C-p>
+nnoremap <silent><Leader>xl  :TroubleToggle loclist<CR><C-w><C-p>
 
 " Show definitions of the word under the cursor
-nnoremap <silent><Leader>xd  :TroubleToggle lsp_definitions<CR>
+nnoremap <silent><Leader>xd  :TroubleToggle lsp_definitions<CR><C-w><C-p>
 
 " Show references of the word under the cursor
-nnoremap <silent><Leader>xr  :TroubleToggle lsp_references<CR>
+nnoremap <silent><Leader>xr  :TroubleToggle lsp_references<CR><C-w><C-p>
 
 " Show type definitions of the word under the cursor
-nnoremap <silent><Leader>xt  :TroubleToggle lsp_type_definitions<CR>
+nnoremap <silent><Leader>xt  :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
