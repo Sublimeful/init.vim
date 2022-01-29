@@ -307,8 +307,8 @@ cmp.setup({
   mapping = {
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.scroll_docs(4),
-    ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+    ['<A-j>'] = cmp.mapping.scroll_docs(4),
+    ['<A-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-e>'] = cmp.mapping.close(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
