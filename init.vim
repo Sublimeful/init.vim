@@ -11,17 +11,15 @@ Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 
 Plug 'unblevable/quick-scope'
-
 Plug 'tpope/vim-obsession'
 
-Plug 'hoob3rt/lualine.nvim'
-
-Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+
+Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -29,18 +27,21 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'alvarosevilla95/luatab.nvim'
-
 Plug 'folke/trouble.nvim'
+Plug 'google/vim-searchindex'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'Raimondi/delimitMate'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
 
-Plug 'google/vim-searchindex'
+
+
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'alvarosevilla95/luatab.nvim'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 
 
