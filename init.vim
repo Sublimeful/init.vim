@@ -359,7 +359,7 @@ require('lsp_signature').setup({
   max_height = 12,
   max_width = -1,
   handler_opts = {
-    border = "none"
+    border = "rounded"
   },
   always_trigger = false,
   auto_close_after = nil,
