@@ -229,7 +229,7 @@ let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
 
 " FZF configuration
-let $FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
+let $FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git"'
 let g:fzf_action={'Enter': 'tab split'}
 
 " Save undo history (make a new dir called undohistory in nvim config)
@@ -307,8 +307,8 @@ cmp.setup({
   mapping = {
     ['<C-j>'] = cmp.mapping.scroll_docs(4),
     ['<C-k>'] = cmp.mapping.scroll_docs(-4),
-    ['<A-j>'] = cmp.mapping.select_next_item(),
-    ['<A-k>'] = cmp.mapping.select_prev_item(),
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
