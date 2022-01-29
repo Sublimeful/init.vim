@@ -182,6 +182,7 @@ tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w
 tnoremap <silent><C-t>    <C-\><C-n>:exit<CR>
 
 " FZF
+nnoremap <silent><Leader>b     :Buffers<CR>
 nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><Leader>g     :Rg<CR>
 
