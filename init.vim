@@ -221,14 +221,8 @@ smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 nnoremap <silent><Leader>xx  :TroubleToggle<CR><C-w><C-p>
 nnoremap <silent><Leader>xq  :TroubleToggle quickfix<CR><C-w><C-p>
 nnoremap <silent><Leader>xl  :TroubleToggle loclist<CR><C-w><C-p>
-
-" Show definitions of the word under the cursor
 nnoremap <silent><Leader>xd  :TroubleToggle lsp_definitions<CR><C-w><C-p>
-
-" Show references of the word under the cursor
 nnoremap <silent><Leader>xr  :TroubleToggle lsp_references<CR><C-w><C-p>
-
-" Show type definitions of the word under the cursor
 nnoremap <silent><Leader>xt  :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 
 " Make <C-w>w work in Terminal mode
@@ -364,11 +358,9 @@ cmp.setup({
   }
 })
 
--- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+-- C# setup (requires omnisharp-mono, also requires VSCode for Unity development)
 local omnisharp_bin = "C:/omnisharp-mono/OmniSharp.exe"
 local pid = vim.fn.getpid()
-
--- C# setup (requires omnisharp-mono, also requires VSCode for Unity development)
 lsp.omnisharp.setup {
   cmd = {omnisharp_bin, "--languageserver", "--hostPID", tostring(pid)};
   root_dir = lsp.util.root_pattern("*.csproj", "*.sln");
@@ -427,6 +419,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     signs = true,
   }
 )
+
+
+
+-- Trouble Configuration
+require("trouble").setup {
+  padding = false,
+  height = 4
+}
 
 
 
