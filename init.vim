@@ -14,6 +14,8 @@ Plug 'unblevable/quick-scope'
 
 Plug 'tpope/vim-obsession'
 
+Plug 'hoob3rt/lualine.nvim'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -29,6 +31,7 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'alvarosevilla95/luatab.nvim'
 
 Plug 'folke/trouble.nvim'
 
@@ -42,12 +45,7 @@ Plug 'google/vim-searchindex'
 
 
 Plug 'nightsense/stellarized'
-Plug 'koirand/tokyo-metro.vim'
-Plug 'rafalbromirski/vim-aurora'
-Plug 'bignimbus/pop-punk.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'ayu-theme/ayu-vim'
-Plug 'doums/darcula'
+Plug 'folke/tokyonight.nvim'
 
 call plug#end()
 
@@ -129,24 +127,6 @@ inoremap <C-j>  <Esc>5j
 inoremap <C-l>  <Esc>5l
 inoremap <C-h>  <Esc>5h
 
-" Resize window with navigation keys
-nnoremap <A-k>       :resize -2<CR>
-nnoremap <A-j>       :resize +2<CR>
-nnoremap <A-l>       :vertical resize -5<CR>
-nnoremap <A-h>       :vertical resize +5<CR>
-vnoremap <A-k>  <Esc>:resize -2<CR>gv
-vnoremap <A-j>  <Esc>:resize +2<CR>gv
-vnoremap <A-l>  <Esc>:vertical resize -5<CR>gv
-vnoremap <A-h>  <Esc>:vertical resize +5<CR>gv
-inoremap <A-k>  <Esc>:resize -2<CR>i
-inoremap <A-j>  <Esc>:resize +2<CR>i
-inoremap <A-l>  <Esc>:vertical resize -5<CR>i
-inoremap <A-h>  <Esc>:vertical resize +5<CR>i
-tnoremap <A-k>  <C-\><C-n>:resize -2<CR>i
-tnoremap <A-j>  <C-\><C-n>:resize +2<CR>i
-tnoremap <A-l>  <C-\><C-n>:vertical resize -5<CR>i
-tnoremap <A-h>  <C-\><C-n>:vertical resize +5<CR>i
-
 " <A-;>/<A-'> as escape key
 nmap     <A-;>  <Esc>
 vnoremap <A-;>  <Esc>
@@ -191,7 +171,7 @@ inoremap <silent><C-b>    <Esc>:NERDTreeToggle<CR><C-w>w
 tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeToggle<CR><C-w>w
 
 " NERDTree set to current directory
-nnoremap <silent><Leader>c     :if @% != ""  &&  @% != "NERD_tree_1"<CR>NERDTree %\|wincmd w<CR>endif<CR>
+nnoremap <silent><Leader>c     :if @% != "" && @% != "NERD_tree_1"<CR>NERDTree %\|wincmd w<CR>endif<CR>
 
 " Terminal
 nnoremap <silent><A-t>         :if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
@@ -203,7 +183,7 @@ inoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>en
 snoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
 snoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
 tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-tnoremap <silent><C-t>    <C-\><C-n>:q<CR>
+tnoremap <silent><C-t>    <C-\><C-n>:bdelete!<CR>
 
 " FZF
 nnoremap <silent><Leader>f     :Files<CR>
@@ -308,8 +288,6 @@ set smartcase
 " <-- Lua Settings
 lua << EOF
 
-
-
 -- Completion/LSP
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
 
@@ -406,8 +384,6 @@ for _, server in ipairs(servers) do
   }
 end
 
-
-
 -- Diagnostic Configuration
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -419,16 +395,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     signs = true,
   }
 )
-
-
-
--- Trouble Configuration
-require("trouble").setup {
-  padding = false,
-  height = 4
-}
-
-
 
 -- Treesitter Configuration
 local parsers = require("nvim-treesitter.parsers")
@@ -456,7 +422,17 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
+-- Trouble Configuration
+require("trouble").setup {
+  padding = false,
+  height = 5
+}
 
+-- LuaLine Configuration
+require('lualine').setup {}
+
+-- LuaTab Configuration
+require('luatab').setup {}
 
 EOF
 " --> Lua Settings
@@ -496,5 +472,5 @@ autocmd             BufWinLeave * call      clearmatches()
 
 
 
-set background=light
-colorscheme aurora
+
+colorscheme tokyonight
