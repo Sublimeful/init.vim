@@ -326,11 +326,6 @@ cmp.setup({
   formatting = {
     format = require('lspkind').cmp_format(),
   },
-  sorting = {
-    comparators = {
-      cmp.config.compare.score,
-    }
-  }
 })
 
 -- C# setup (requires omnisharp-mono, also requires VSCode for Unity development)
