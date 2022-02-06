@@ -262,7 +262,7 @@ Plug 'google/vim-searchindex'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'Raimondi/delimitMate'
-Plug 'Sublimeful/vim-brackets'
+Plug 'cohama/lexima.vim'
 Plug 'sheerun/vim-polyglot'
 
 
