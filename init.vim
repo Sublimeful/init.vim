@@ -275,9 +275,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 
 
-Plug 'nightsense/stellarized'
 Plug 'folke/tokyonight.nvim'
 Plug 'glepnir/zephyr-nvim'
+Plug 'rebelot/kanagawa.nvim'
 
 call plug#end()
 
@@ -455,4 +455,4 @@ autocmd             BufWinLeave * call      clearmatches()
 
 
 
-colorscheme zephyr
+colorscheme kanagawa
