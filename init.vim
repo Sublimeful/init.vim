@@ -262,7 +262,7 @@ Plug 'google/vim-searchindex'
 
 Plug 'tomtom/tcomment_vim'
 Plug 'Raimondi/delimitMate'
-Plug 'cohama/lexima.vim'
+Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
 
 
@@ -393,21 +393,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- Treesitter Configuration
-local parsers = require("nvim-treesitter.parsers")
-local parser_config = parsers.get_parser_configs()
-parser_config.tsx.used_by = {"javascript", "typescript.tsx"}
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    "tsx",
-    "toml",
-    "fish",
-    "php",
-    "json",
-    "yaml",
-    "swift",
-    "html",
-    "scss"
-  },
   highlight = {
     enable = true,
     disable = {},
