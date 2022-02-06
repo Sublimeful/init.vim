@@ -180,6 +180,9 @@ let g:nerdtree_tabs_synchronize_focus=0
 let $FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git'
 let g:fzf_action={'Enter': 'tab split'}
 
+" vim-polyglot configuration
+let g:polyglot_disabled=['autoindent']
+
 " Save undo history (make a new dir called undohistory in nvim config)
 set undofile
 set undodir=~/.config/nvim/undohistory
