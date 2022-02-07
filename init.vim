@@ -143,7 +143,8 @@ smap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
 smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 
 " Trouble
-nnoremap <silent><Leader>xx  :TroubleToggle<CR><C-w><C-p>
+nnoremap <silent><Leader>xx  :TroubleToggle document_diagnostics<CR><C-w><C-p>
+nnoremap <silent><Leader>xw  :TroubleToggle workspace_diagnostics<CR><C-w><C-p>
 nnoremap <silent><Leader>xq  :TroubleToggle quickfix<CR><C-w><C-p>
 nnoremap <silent><Leader>xl  :TroubleToggle loclist<CR><C-w><C-p>
 nnoremap <silent><Leader>xd  :TroubleToggle lsp_definitions<CR><C-w><C-p>
