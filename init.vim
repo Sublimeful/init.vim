@@ -134,12 +134,6 @@ nnoremap <silent><Leader>b     :Buffers<CR>
 nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><Leader>g     :Rg<CR>
 
-" vsnip
-imap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
-imap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
-smap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
-smap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
-
 " Trouble
 nnoremap <silent><Leader>xx  :TroubleToggle document_diagnostics<CR><C-w><C-p>
 nnoremap <silent><Leader>xw  :TroubleToggle workspace_diagnostics<CR><C-w><C-p>
@@ -300,6 +294,11 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+-- Function feedkey
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 -- Completion Setup
 cmp.setup({
   snippet = {
@@ -320,6 +319,18 @@ cmp.setup({
         fallback()
       end
     end),
+    ['<C-e>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.mapping.close()
+      end
+      feedkey("<Plug>(vsnip-jump-next)", "")
+    end, {"i", "s"}),
+    ['<C-q>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.mapping.close()
+      end
+      feedkey("<Plug>(vsnip-jump-prev)", "")
+    end, {"i", "s"}),
   },
   sources = {
     {name = 'nvim_lsp'},
