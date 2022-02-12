@@ -135,12 +135,10 @@ nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><Leader>g     :Rg<CR>
 
 " vsnip
-nmap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
-nmap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
-imap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
-imap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
-smap <expr><C-[>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
-smap <expr><C-]>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+imap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+imap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
+smap <expr><C-q>  vsnip#jumpable(-1) ? "<Plug>(vsnip-jump-prev)" : ""
+smap <expr><C-e>  vsnip#jumpable(1)  ? "<Plug>(vsnip-jump-next)" : ""
 
 " Trouble
 nnoremap <silent><Leader>xx  :TroubleToggle document_diagnostics<CR><C-w><C-p>
