@@ -176,6 +176,9 @@ let g:fzf_action={'Enter': 'tab split'}
 " vim-polyglot configuration
 let g:polyglot_disabled=['autoindent']
 
+" delimitMate configuration
+let &matchpairs=&matchpairs.',<:>'
+
 " Save undo history (make a new dir called undohistory in nvim config)
 set undofile
 set undodir=~/.config/nvim/undohistory
@@ -294,8 +297,8 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
--- Function feedkey
-local feedkey = function(key, mode)
+-- Function feedkeys
+local feedkeys = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
@@ -323,14 +326,14 @@ cmp.setup({
       if cmp.visible() then
         cmp.mapping.close()
       end
-      feedkey("<Plug>(vsnip-jump-next)", "")
-    end, {"i", "s"}),
+      feedkeys('<Plug>(vsnip-jump-next)', '')
+    end, {'i', 's'}),
     ['<C-q>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.mapping.close()
       end
-      feedkey("<Plug>(vsnip-jump-prev)", "")
-    end, {"i", "s"}),
+      feedkeys('<Plug>(vsnip-jump-prev)', '')
+    end, {'i', 's'}),
   },
   sources = {
     {name = 'nvim_lsp'},
