@@ -176,9 +176,6 @@ let g:fzf_action={'Enter': 'tab split'}
 " vim-polyglot configuration
 let g:polyglot_disabled=['autoindent']
 
-" delimitMate configuration
-let &matchpairs=&matchpairs.',<:>'
-
 " Save undo history (make a new dir called undohistory in nvim config)
 set undofile
 set undodir=~/.config/nvim/undohistory
