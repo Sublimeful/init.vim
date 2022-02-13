@@ -456,13 +456,13 @@ autocmd VimEnter * nested call RestoreSess()
 
 " Autocommands for highlighting trailing spaces
 autocmd ColorScheme             * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
-autocmd InsertLeave             * match     ExtraWhitespace /\s\+$/
-autocmd InsertEnter,BufWinEnter * match     ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertEnter             * match     ExtraWhitespace /\S\@<=\s\+\%#\@<!$/
+autocmd InsertLeave,BufWinEnter * match     ExtraWhitespace /\S\@<=\s\+$/
 autocmd             BufWinLeave * call      clearmatches()
 
 " --> AutoCommands
-
-
-
-
+"           ¯\_(._.)_/¯
+"             ( * 0*)//
+"           Miscellaneous Settings
+set         cursorline
 colorscheme kanagawa
