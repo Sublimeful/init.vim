@@ -455,10 +455,11 @@ autocmd VimLeave *        call SaveSess()
 autocmd VimEnter * nested call RestoreSess()
 
 " Autocommands for highlighting trailing spaces
-autocmd ColorScheme             * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
-autocmd InsertEnter             * match     ExtraWhitespace /\S\@<=\s\+\%#\@<!$/
-autocmd InsertLeave,BufWinEnter * match     ExtraWhitespace /\S\@<=\s\+$/
-autocmd             BufWinLeave * call      clearmatches()
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
+autocmd InsertEnter * match     ExtraWhitespace /\S\@<=\s\+\%#\@<!$/
+autocmd InsertLeave * match     ExtraWhitespace /\S\@<=\s\+$/
+autocmd BufWinEnter * match     ExtraWhitespace /\S\@<=\s\+$/
+autocmd BufWinLeave * call      clearmatches()
 
 " --> AutoCommands
 "           ¯\_(._.)_/¯
