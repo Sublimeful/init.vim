@@ -257,7 +257,7 @@ Plug 'folke/trouble.nvim'
 Plug 'google/vim-searchindex'
 
 Plug 'tomtom/tcomment_vim'
-Plug 'Raimondi/delimitMate'
+Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
 
