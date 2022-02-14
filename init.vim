@@ -135,16 +135,20 @@ nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><Leader>g     :Rg<CR>
 
 " Trouble
-nnoremap <silent><Leader>xx  :TroubleToggle document_diagnostics<CR><C-w><C-p>
-nnoremap <silent><Leader>xw  :TroubleToggle workspace_diagnostics<CR><C-w><C-p>
-nnoremap <silent><Leader>xq  :TroubleToggle quickfix<CR><C-w><C-p>
-nnoremap <silent><Leader>xl  :TroubleToggle loclist<CR><C-w><C-p>
-nnoremap <silent><Leader>xd  :TroubleToggle lsp_definitions<CR><C-w><C-p>
-nnoremap <silent><Leader>xr  :TroubleToggle lsp_references<CR><C-w><C-p>
-nnoremap <silent><Leader>xt  :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
+nnoremap <silent><Leader>xx    :TroubleToggle document_diagnostics<CR><C-w><C-p>
+nnoremap <silent><Leader>xw    :TroubleToggle workspace_diagnostics<CR><C-w><C-p>
+nnoremap <silent><Leader>xq    :TroubleToggle quickfix<CR><C-w><C-p>
+nnoremap <silent><Leader>xl    :TroubleToggle loclist<CR><C-w><C-p>
+nnoremap <silent><Leader>xd    :TroubleToggle lsp_definitions<CR><C-w><C-p>
+nnoremap <silent><Leader>xr    :TroubleToggle lsp_references<CR><C-w><C-p>
+nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
+
+" Sneak
+map f  <Plug>Sneak_f
+map F  <Plug>Sneak_F
 
 " --> Keybinds
 
@@ -230,35 +234,31 @@ set smartcase
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'preservim/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
+
+Plug 'preservim/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+
 Plug 'neovim/nvim-lspconfig'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
-
 Plug 'folke/trouble.nvim'
 Plug 'google/vim-searchindex'
-
-Plug 'unblevable/quick-scope'
+Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
-
-
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
