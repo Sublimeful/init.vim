@@ -135,20 +135,20 @@ nnoremap <silent><Leader>f     :Files<CR>
 nnoremap <silent><Leader>g     :Rg<CR>
 
 " Trouble
-nnoremap <silent><Leader>xx  :TroubleToggle document_diagnostics<CR><C-w><C-p>
-nnoremap <silent><Leader>xw  :TroubleToggle workspace_diagnostics<CR><C-w><C-p>
-nnoremap <silent><Leader>xq  :TroubleToggle quickfix<CR><C-w><C-p>
-nnoremap <silent><Leader>xl  :TroubleToggle loclist<CR><C-w><C-p>
-nnoremap <silent><Leader>xd  :TroubleToggle lsp_definitions<CR><C-w><C-p>
-nnoremap <silent><Leader>xr  :TroubleToggle lsp_references<CR><C-w><C-p>
-nnoremap <silent><Leader>xt  :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
+nnoremap <silent><Leader>xx    :TroubleToggle document_diagnostics<CR><C-w><C-p>
+nnoremap <silent><Leader>xw    :TroubleToggle workspace_diagnostics<CR><C-w><C-p>
+nnoremap <silent><Leader>xq    :TroubleToggle quickfix<CR><C-w><C-p>
+nnoremap <silent><Leader>xl    :TroubleToggle loclist<CR><C-w><C-p>
+nnoremap <silent><Leader>xd    :TroubleToggle lsp_definitions<CR><C-w><C-p>
+nnoremap <silent><Leader>xr    :TroubleToggle lsp_references<CR><C-w><C-p>
+nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
 " Sneak
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
+map f  <Plug>Sneak_f
+map F  <Plug>Sneak_F
 
 " --> Keybinds
 
