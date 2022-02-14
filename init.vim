@@ -233,9 +233,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 
-Plug 'unblevable/quick-scope'
-Plug 'tpope/vim-obsession'
-
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
@@ -253,7 +250,10 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
 Plug 'folke/trouble.nvim'
 Plug 'google/vim-searchindex'
 
-Plug 'tomtom/tcomment_vim'
+Plug 'unblevable/quick-scope'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
 Plug 'sheerun/vim-polyglot'
