@@ -229,11 +229,11 @@ set smartcase
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
 
 Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -241,8 +241,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 
-Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
 
 Plug 'Sublimeful/AutoClose'
@@ -252,6 +252,7 @@ Plug 'folke/trouble.nvim'
 Plug 'justinmk/vim-sneak'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'onsails/lspkind-nvim'
+Plug 'RRethy/vim-hexokinase'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'google/vim-searchindex'
@@ -264,8 +265,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 
-Plug 'folke/tokyonight.nvim'
 Plug 'glepnir/zephyr-nvim'
+Plug 'folke/tokyonight.nvim'
 Plug 'rebelot/kanagawa.nvim'
 
 call plug#end()
@@ -303,29 +304,42 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-j>'] = cmp.mapping.select_next_item(),
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<A-j>'] = cmp.mapping.scroll_docs(4),
     ['<A-k>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-e>'] = cmp.mapping.close(),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() and has_words_before() then
         cmp.confirm({select = true})
       else
         fallback()
       end
-    end),
+    end, {'i'}),
+    ['<C-j>'] = cmp.mapping(function(_)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        cmp.complete()
+      end
+    end, {'i'}),
+    ['<C-k>'] = cmp.mapping(function(_)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        cmp.complete()
+      end
+    end, {'i'}),
     ['<C-e>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.mapping.close()
+        cmp.close()
+      elseif vim.fn['vsnip#jumpable'](1) == 1 then
+        feedkeys('<Plug>(vsnip-jump-next)', '')
       end
-      feedkeys('<Plug>(vsnip-jump-next)', '')
     end, {'i', 's'}),
     ['<C-q>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.mapping.close()
+        cmp.close()
+      elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+        feedkeys('<Plug>(vsnip-jump-prev)', '')
       end
-      feedkeys('<Plug>(vsnip-jump-prev)', '')
     end, {'i', 's'}),
   },
   sources = {
