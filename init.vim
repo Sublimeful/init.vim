@@ -1,6 +1,9 @@
 " <-- Functions
 
 function! TabSweep()
+  " Switch to normal mode
+  execute feedkeys("\<Esc>", "t")
+
   " Remember current tab number
   let t=tabpagenr()
 
@@ -28,9 +31,6 @@ function! RestoreSess()
 
   " Load session if session file is found on vim enter
   if filereadable('Session.vim') | execute 'source Session.vim' | endif
-
-  " Call tabsweep to refresh the tab names
-  call timer_start(0, {-> TabSweep()})
 endfunction
 
 function! OpenInTab(node)
