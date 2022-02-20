@@ -129,10 +129,12 @@ snoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>en
 tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
 tnoremap <silent><C-t>    <C-\><C-n>:exit<CR>
 
-" FZF
-nnoremap <silent><Leader>b     :Buffers<CR>
-nnoremap <silent><Leader>f     :Files<CR>
-nnoremap <silent><Leader>g     :Rg<CR>
+" Telescope
+nnoremap <silent><Leader>b     :Telescope buffers<CR>
+nnoremap <silent><Leader>p     :Telescope neoclip<CR>
+nnoremap <silent><Leader>h     :Telescope help_tags<CR>
+nnoremap <silent><Leader>g     :Telescope live_grep<CR>
+nnoremap <silent><Leader>f     :Telescope find_files<CR>
 
 " Trouble
 nnoremap <silent><Leader>xx    :TroubleToggle document_diagnostics<CR><C-w><C-p>
@@ -172,10 +174,6 @@ let g:nerdtree_tabs_autoclose=0
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
-
-" FZF configuration
-let $FZF_DEFAULT_COMMAND='rg --files --hidden -g !.git'
-let g:fzf_action={'Enter': 'tab split'}
 
 " Save undo history (make a new dir called undohistory in nvim config)
 set undofile
@@ -237,30 +235,32 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
-
 Plug 'preservim/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'onsails/lspkind-nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'folke/trouble.nvim'
-Plug 'google/vim-searchindex'
-Plug 'justinmk/vim-sneak'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+
 Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
 
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'alvarosevilla95/luatab.nvim'
+Plug 'folke/trouble.nvim'
+Plug 'justinmk/vim-sneak'
 Plug 'hoob3rt/lualine.nvim'
+Plug 'onsails/lspkind-nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'google/vim-searchindex'
+Plug 'AckslD/nvim-neoclip.lua'
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'alvarosevilla95/luatab.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 
@@ -414,6 +414,38 @@ require('nvim-treesitter.configs').setup {
 require("trouble").setup {
   padding = false,
   height = 5
+}
+
+-- Telescope Configuration
+local actions = require("telescope.actions")
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<Esc>"] = actions.close,
+        ["<A-;>"] = actions.close,
+        ["<A-'>"] = actions.close,
+        ["<C-w>"] = {"<C-w>", type="command"},
+        ["<C-h>"] = {"<C-w>", type="command"},
+        ["<C-BS>"] = {"<C-w>", type="command"},
+      }
+    }
+  }
+}
+
+-- Neoclip Configuration
+require('telescope').load_extension('neoclip')
+require('neoclip').setup {
+  keys = {
+    telescope = {
+      i = {
+        paste_behind = "<C-p>",
+        paste = "<CR>",
+      }
+    }
+  }
 }
 
 -- LuaLine Configuration
