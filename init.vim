@@ -148,10 +148,6 @@ nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
-" Sneak
-map f  <Plug>Sneak_f
-map F  <Plug>Sneak_F
-
 " --> Keybinds
 
 
@@ -416,7 +412,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
-    disable = {},
+    disable = {"html"},
   },
   indent = {
     enable = false,
