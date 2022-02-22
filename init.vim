@@ -1,9 +1,6 @@
 " <-- Functions
 
 function! TabSweep()
-  " Switch to normal mode
-  execute feedkeys("\<Esc>", "t")
-
   " Remember current tab number
   let t=tabpagenr()
 
