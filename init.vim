@@ -145,7 +145,7 @@ nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
-" Easymotion
+" EasyMotion
 map <Leader>s  <Plug>(easymotion-prefix)
 
 " --> Keybinds
