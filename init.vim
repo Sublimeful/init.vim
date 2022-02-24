@@ -145,6 +145,9 @@ nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 " Make <C-w>w work in Terminal mode
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
+" Easymotion
+map <Leader>s  <Plug>(easymotion-prefix)
+
 " --> Keybinds
 
 
@@ -242,7 +245,6 @@ Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
 
 Plug 'folke/trouble.nvim'
-Plug 'justinmk/vim-sneak'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'RRethy/vim-hexokinase'
@@ -251,6 +253,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'google/vim-searchindex'
 Plug 'AckslD/nvim-neoclip.lua'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'easymotion/vim-easymotion'
 Plug 'alvarosevilla95/luatab.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
