@@ -146,7 +146,7 @@ nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 tnoremap <silent><C-w>  <C-\><C-n><C-w>
 
 " EasyMotion
-map <Leader>s  <Plug>(easymotion-prefix)
+nmap <Leader>s  <Plug>(easymotion-s)
 
 " --> Keybinds
 
