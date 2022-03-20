@@ -168,6 +168,14 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_synchronize_view=0
 let g:nerdtree_tabs_synchronize_focus=0
 
+" Autosave configuration
+let g:auto_save_events=["InsertLeave", "TextChanged", "CursorHold", "CursorHoldI"]
+let g:auto_save_silent=1
+let g:auto_save=1
+
+" Updatetime for auto save
+set updatetime=1000
+
 " Save undo history (make a new dir called undohistory in nvim config)
 set undofile
 set undodir=~/.config/nvim/undohistory
@@ -242,7 +250,7 @@ Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
 
 Plug 'folke/trouble.nvim'
-Plug 'justinmk/vim-sneak'
+Plug '907th/vim-auto-save'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'RRethy/vim-hexokinase'
@@ -323,14 +331,14 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.close()
-      elseif vim.fn['vsnip#jumpable'](1) == 1 then
+      end if vim.fn['vsnip#jumpable'](1) == 1 then
         feedkeys('<Plug>(vsnip-jump-next)', '')
       end
     end, {'i', 's'}),
     ['<C-q>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.close()
-      elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+      end if vim.fn['vsnip#jumpable'](-1) == 1 then
         feedkeys('<Plug>(vsnip-jump-prev)', '')
       end
     end, {'i', 's'}),
