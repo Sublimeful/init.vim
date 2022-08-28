@@ -221,6 +221,9 @@ set foldmarker=<--,-->
 set ignorecase
 set smartcase
 
+" Highlight the line where the cursor is
+set cursorline
+
 " --> Settings
 
 
@@ -505,8 +508,12 @@ autocmd BufWinEnter * match     ExtraWhitespace /\S\@<=\s\+$/
 autocmd BufWinLeave * call      clearmatches()
 
 " --> AutoCommands
-"           ¯\_(._.)_/¯
-"             ( * 0*)//
-"           Miscellaneous Settings
-set         cursorline
+
+
+
+
+" <-- Theme
+
 colorscheme kanagawa
+
+" --> Theme
