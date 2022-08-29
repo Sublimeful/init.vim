@@ -96,14 +96,14 @@ for i in range(1, 9)
   execute "vnoremap \<A-".i.">  \<Esc>".i."gt"
   execute "tnoremap \<A-".i.">  \<C-\>\<C-n>".i."gt"
 endfor
-nnoremap <silent><C-Ins>       :tabnew<CR>
-nnoremap <silent><C-Del>       :tabclose<CR>
-vnoremap <silent><C-Ins>  <Esc>:tabnew<CR>
-vnoremap <silent><C-Del>  <Esc>:tabclose<CR>
-inoremap <silent><C-Ins>  <Esc>:tabnew<CR>
-inoremap <silent><C-Del>  <Esc>:tabclose<CR>
-tnoremap <silent><C-Ins>  <C-\><C-n>:tabnew<CR>
-tnoremap <silent><C-Del>  <C-\><C-n>:tabclose<CR>
+nnoremap <silent><A-Ins>       :tabnew<CR>
+nnoremap <silent><A-Del>       :tabclose<CR>
+vnoremap <silent><A-Ins>  <Esc>:tabnew<CR>
+vnoremap <silent><A-Del>  <Esc>:tabclose<CR>
+inoremap <silent><A-Ins>  <Esc>:tabnew<CR>
+inoremap <silent><A-Del>  <Esc>:tabclose<CR>
+tnoremap <silent><A-Ins>  <C-\><C-n>:tabnew<CR>
+tnoremap <silent><A-Del>  <C-\><C-n>:tabclose<CR>
 
 " Toggles NERDTree
 nnoremap <silent><C-b>         :NERDTreeToggle<CR><C-w>w
@@ -113,18 +113,6 @@ tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeToggle<CR><C-w>w
 
 " NERDTree set to current directory
 nnoremap <silent><Leader>c     :if @% != "" && @% != "NERD_tree_1"<CR>NERDTree %\|wincmd w<CR>endif<CR>
-
-" Terminal
-nnoremap <silent><A-t>         :if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-nnoremap <silent><C-t>         :if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
-vnoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-vnoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
-inoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-inoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
-snoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-snoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
-tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-tnoremap <silent><C-t>    <C-\><C-n>:exit<CR>
 
 " Telescope
 nnoremap <silent><Leader>b     :Telescope buffers<CR>
@@ -142,8 +130,23 @@ nnoremap <silent><Leader>xd    :TroubleToggle lsp_definitions<CR><C-w><C-p>
 nnoremap <silent><Leader>xr    :TroubleToggle lsp_references<CR><C-w><C-p>
 nnoremap <silent><Leader>xt    :TroubleToggle lsp_type_definitions<CR><C-w><C-p>
 
-" Make <C-w>w work in Terminal mode
-tnoremap <silent><C-w>  <C-\><C-n><C-w>
+" If not using vscode, then enable terminal features
+if !exists('g:vscode')
+  " Terminal
+  nnoremap <silent><A-t>         :if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+  nnoremap <silent><C-t>         :if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+  vnoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+  vnoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+  inoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+  inoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+  snoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+  snoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
+  tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
+  tnoremap <silent><C-t>    <C-\><C-n>:exit<CR>
+
+  " Make <C-w>w work in Terminal mode
+  tnoremap <silent><C-w>  <C-\><C-n><C-w>
+endif
 
 " --> Keybinds
 
