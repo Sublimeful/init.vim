@@ -373,7 +373,7 @@ require('lsp_signature').setup({
   floating_window = true,
   floating_window_above_cur_line = true,
   floating_window_off_x = 1,
-  floating_window_off_y = 1,
+  floating_window_off_y = 0,
   fix_pos = false,
   hint_enable = false,
   hint_prefix = "λ ",
