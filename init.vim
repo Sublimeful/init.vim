@@ -267,6 +267,7 @@ Plug 'AckslD/nvim-neoclip.lua'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'alvarosevilla95/luatab.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -287,8 +288,6 @@ call plug#end()
 lua << EOF
 
 -- Completion/LSP
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
-
 local cmp = require('cmp')
 local lsp = require('lspconfig')
 
@@ -399,7 +398,9 @@ require('lsp_signature').setup({
   toggle_key = nil
 })
 
--- Setup lsp for each server
+-- Setup lsp installer, then setup lsp for each server
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
+require("nvim-lsp-installer").setup {}
 for _, server in ipairs(servers) do
   lsp[server].setup {
     on_attach = nil,
