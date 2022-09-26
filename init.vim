@@ -399,8 +399,9 @@ require('lsp_signature').setup({
 })
 
 -- Setup lsp installer, then setup lsp for each server
-local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
 require("nvim-lsp-installer").setup {}
+
+local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
 for _, server in ipairs(servers) do
   lsp[server].setup {
     on_attach = nil,
