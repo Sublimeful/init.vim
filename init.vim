@@ -259,17 +259,17 @@ Plug 'folke/trouble.nvim'
 Plug '907th/vim-auto-save'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'onsails/lspkind-nvim'
-Plug 'RRethy/vim-hexokinase'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 Plug 'google/vim-searchindex'
 Plug 'AckslD/nvim-neoclip.lua'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'alvarosevilla95/luatab.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 
 
