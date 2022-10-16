@@ -269,11 +269,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lukas-reineke/indent-blankline.nvim'
 
-
-
-Plug 'glepnir/zephyr-nvim'
-Plug 'folke/tokyonight.nvim'
-Plug 'rebelot/kanagawa.nvim'
+Plug 'savq/melange'
 
 call plug#end()
 
@@ -517,6 +513,6 @@ autocmd BufWinLeave * call      clearmatches()
 
 " <-- Theme
 
-colorscheme kanagawa
+colorscheme melange
 
 " --> Theme
