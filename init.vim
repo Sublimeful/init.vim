@@ -264,10 +264,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 Plug 'google/vim-searchindex'
 Plug 'AckslD/nvim-neoclip.lua'
+Plug 'williamboman/mason.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'alvarosevilla95/luatab.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'williamboman/nvim-lsp-installer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lukas-reineke/indent-blankline.nvim'
 
@@ -398,8 +398,8 @@ require('lsp_signature').setup({
   toggle_key = nil
 })
 
--- Setup lsp installer, then setup lsp for each server
-require("nvim-lsp-installer").setup {}
+-- Setup mason, the lsp installer, then setup lsp for each server
+require("mason").setup()
 
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
 for _, server in ipairs(servers) do
