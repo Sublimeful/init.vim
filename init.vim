@@ -141,8 +141,6 @@ if !exists('g:vscode')
   inoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
   snoremap <silent><A-t>    <Esc>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
   snoremap <silent><C-t>    <Esc>:if @% != "" \|\| &modified<CR>sp\|wincmd w<CR>endif<CR>:term<CR>i
-  tnoremap <silent><A-t>    <C-\><C-n>:if @% != "" \|\| &modified<CR>vsp\|wincmd w<CR>endif<CR>:term<CR>i
-  tnoremap <silent><C-t>    <C-\><C-n>:exit<CR>
 
   " Make <C-w>w work in Terminal mode
   tnoremap <silent><C-w>  <C-\><C-n><C-w>
