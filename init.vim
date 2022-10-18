@@ -1,18 +1,5 @@
 " <-- Functions
 
-function! TabSweep()
-  " Remember current tab number
-  let t=tabpagenr()
-
-  " Cycle through all the tabs
-  for i in range(1, tabpagenr('$'))
-    execute "normal".i."gt"
-  endfor
-
-  " Go back to original tab
-  execute "normal".t."gt"
-endfunction
-
 function! SaveSess()
   " SaveSess if user created file called 'Session.vim' in directory and g:saveSession exists
   if filereadable('Session.vim') && exists("g:saveSession") | Obsession | endif
@@ -28,14 +15,6 @@ function! RestoreSess()
 
   " Load session if session file is found on vim enter
   if filereadable('Session.vim') | execute 'source Session.vim' | endif
-endfunction
-
-function! OpenInTab(node)
-  " Open the file in the current tab
-  call a:node.activate({'reuse': 'all', 'where': 'p', 'keepopen': 1})
-
-  " Call tabsweep to refresh the tab names
-  call timer_start(0, {-> TabSweep()})
 endfunction
 
 " --> Functions
@@ -63,10 +42,6 @@ vnoremap <C-k>       5k
 vnoremap <C-j>       5j
 vnoremap <C-l>       5l
 vnoremap <C-h>       5h
-inoremap <C-k>  <Esc>5k
-inoremap <C-j>  <Esc>5j
-inoremap <C-l>  <Esc>5l
-inoremap <C-h>  <Esc>5h
 
 " <A-;>/<A-'> as escape key
 nmap     <A-;>  <Esc>
@@ -105,18 +80,8 @@ inoremap <silent><A-Del>  <Esc>:tabclose<CR>
 tnoremap <silent><A-Ins>  <C-\><C-n>:tabnew<CR>
 tnoremap <silent><A-Del>  <C-\><C-n>:tabclose<CR>
 
-" Toggles NERDTree
-nnoremap <silent><C-b>         :NERDTreeToggle<CR><C-w>w
-vnoremap <silent><C-b>    <Esc>:NERDTreeToggle<CR><C-w>w
-inoremap <silent><C-b>    <Esc>:NERDTreeToggle<CR><C-w>w
-tnoremap <silent><C-b>    <C-\><C-n>:NERDTreeToggle<CR><C-w>w
-
-" NERDTree set to current directory
-nnoremap <silent><Leader>c     :if @% != "" && @% != "NERD_tree_1"<CR>NERDTree %\|wincmd w<CR>endif<CR>
-
 " Telescope
 nnoremap <silent><Leader>b     :Telescope buffers<CR>
-nnoremap <silent><Leader>p     :Telescope neoclip<CR>
 nnoremap <silent><Leader>h     :Telescope help_tags<CR>
 nnoremap <silent><Leader>g     :Telescope live_grep<CR>
 nnoremap <silent><Leader>f     :Telescope find_files<CR>
@@ -159,27 +124,9 @@ syntax enable
 " Hide ~ on the number line
 let &fcs='eob: '
 
-" NERDTree configuration
-let g:NERDTreeWinSize=30
-let g:NERDTreeChDirMode=2
-let g:NERDTreeShowHidden=1
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_autoclose=0
-let g:nerdtree_tabs_focus_on_files=1
-let g:nerdtree_tabs_synchronize_view=0
-let g:nerdtree_tabs_synchronize_focus=0
-
-" Autosave configuration
-let g:auto_save_events=["InsertLeave", "TextChanged", "CursorHold", "CursorHoldI"]
-let g:auto_save_silent=1
-let g:auto_save=1
-
-" Updatetime for auto save
-set updatetime=1000
-
 " Save undo history (make a new dir called undohistory in nvim config)
-set undofile
 set undodir=~/.config/nvim/undohistory
+set undofile
 
 " Enables mouse support
 set mouse=a
@@ -234,41 +181,43 @@ set cursorline
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Neovim LSP Plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ray-x/lsp_signature.nvim'
+Plug 'onsails/lspkind-nvim'
+Plug 'williamboman/mason.nvim'
+
+" Autocomplete Plugins
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
-Plug 'preservim/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+" Diagnostic Plugins
+Plug 'folke/trouble.nvim'
 
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
-
+" Editor Plugins
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
-
 Plug 'Sublimeful/AutoClose'
 Plug 'Sublimeful/vim-brackets'
-
-Plug 'folke/trouble.nvim'
-Plug '907th/vim-auto-save'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'onsails/lspkind-nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
 Plug 'google/vim-searchindex'
-Plug 'AckslD/nvim-neoclip.lua'
-Plug 'williamboman/mason.nvim'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'alvarosevilla95/luatab.nvim'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'lukas-reineke/indent-blankline.nvim'
 
+" Cosmetic Plugins
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'alvarosevilla95/luatab.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'RRethy/vim-hexokinase', {'do': 'make hexokinase'}
+
+" ColorScheme Plugins
 Plug 'savq/melange'
 
 call plug#end()
@@ -281,9 +230,9 @@ call plug#end()
 " <-- Lua Settings
 lua << EOF
 
--- Completion/LSP
-local cmp = require('cmp')
+-- LSP/Completion
 local lsp = require('lspconfig')
+local cmp = require('cmp')
 
 -- Function to check if there is words before the cursor
 local has_words_before = function()
@@ -344,7 +293,6 @@ cmp.setup({
   },
   sources = {
     {name = 'nvim_lsp'},
-    {name = 'vsnip'},
     {name = 'buffer'},
   },
   formatting = {
@@ -392,9 +340,7 @@ require('lsp_signature').setup({
   toggle_key = nil
 })
 
--- Setup mason, the lsp installer, then setup lsp for each server
-require("mason").setup()
-
+-- Setup lsp for each server
 local servers = {'pyright', 'rust_analyzer', 'tsserver', 'jdtls', 'clangd', 'bashls', 'dartls', 'csharp_ls', 'html', 'emmet_ls', 'cssls'}
 for _, server in ipairs(servers) do
   lsp[server].setup {
@@ -402,6 +348,9 @@ for _, server in ipairs(servers) do
     capabilities = require('cmp_nvim_lsp').default_capabilities()
   }
 end
+
+-- Setup mason, the lsp installer
+require("mason").setup()
 
 -- Diagnostic Configuration
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -452,19 +401,6 @@ require('telescope').setup {
   }
 }
 
--- Neoclip Configuration
-require('telescope').load_extension('neoclip')
-require('neoclip').setup {
-  keys = {
-    telescope = {
-      i = {
-        paste_behind = "<C-p>",
-        paste = "<CR>",
-      }
-    }
-  }
-}
-
 -- LuaLine Configuration
 require('lualine').setup {}
 
@@ -491,15 +427,11 @@ autocmd BufReadPost *
       \ |   exe "normal! g`\""
       \ | endif
 
-" Autocommands for opening files in NERDTree
-autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<2-LeftMouse>', 'scope': 'FileNode', 'callback': 'OpenInTab', 'override': 1})
-autocmd VimEnter * call NERDTreeAddKeyMap({'key': '<CR>',          'scope': 'FileNode', 'callback': 'OpenInTab', 'override': 1})
-
 " Autocommands for saving and restoring sessions
 autocmd VimLeave *        call SaveSess()
 autocmd VimEnter * nested call RestoreSess()
 
-" Autocommands for highlighting trailing spaces
+" Autocommands for highlighting trailing spaces (disabled by default, uncomment next line to enable)
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=magenta guibg=magenta
 autocmd InsertEnter * match     ExtraWhitespace /\S\@<=\s\+\%#\@<!$/
 autocmd InsertLeave * match     ExtraWhitespace /\S\@<=\s\+$/
