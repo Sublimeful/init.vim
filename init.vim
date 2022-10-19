@@ -124,6 +124,14 @@ syntax enable
 " Hide ~ on the number line
 let &fcs='eob: '
 
+" Autosave configuration
+let g:auto_save_events=["InsertLeave", "TextChanged", "CursorHold", "CursorHoldI"]
+let g:auto_save_silent=1
+let g:auto_save=1
+
+" Updatetime for autosave
+set updatetime=1000
+
 " Save undo history (make a new dir called undohistory in nvim config)
 set undodir=~/.config/nvim/undohistory
 set undofile
@@ -208,6 +216,7 @@ Plug 'Sublimeful/vim-brackets'
 Plug 'google/vim-searchindex'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug '907th/vim-auto-save'
 
 " Cosmetic Plugins
 Plug 'ryanoasis/vim-devicons'
@@ -385,6 +394,11 @@ require("trouble").setup {
 -- Telescope Configuration
 local actions = require("telescope.actions")
 require('telescope').setup {
+  pickers = {
+    buffers = {
+      sort_lastused = true
+    }
+  },
   defaults = {
     mappings = {
       i = {
